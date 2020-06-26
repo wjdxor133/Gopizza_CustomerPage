@@ -2,7 +2,8 @@ import React from "react";
 import "./Application.scss";
 
 const Application = () => {
-  return <div className="Application"></div>;
+  return;
+  <div></div>;
 };
 
 export default Application;
