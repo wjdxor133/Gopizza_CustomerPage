@@ -1,8 +1,13 @@
 import React from "react";
 import "./Main.scss";
+import Map from "../../components/Map/Map";
 
-const main = () => {
-  return <div></div>;
+const Main = () => {
+  return (
+    <div>
+      <Map />
+    </div>
+  );
 };
 
-export default main;
+export default Main;
