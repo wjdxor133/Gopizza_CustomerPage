@@ -1,0 +1,20 @@
+#instagram {
+  overflow: hidden;
+  width: 100%;
+
+  ul {
+    width: 85%;
+    margin: 30px auto 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+    li {
+      img {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+      }
+    }
+  }
+}

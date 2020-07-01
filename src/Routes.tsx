@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "../src/pages/Main/Main";
-import KakaoPlusBtn from "./components/Application/KakaoPlusBtn/KakaoPlusBtn";
+// import KakaoPlusBtn from "./components/Application/KakaoPlusBtn/KakaoPlusBtn";
 import InstaConnect from "./components/Application/InstaConnect/InstaConnect";
 
 class Routes extends React.Component {
@@ -9,8 +9,7 @@ class Routes extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={Main} />
-          <Route exact path="/insta" component={InstaConnect} />
+          <Route exact path="/" component={InstaConnect} />
         </Switch>
       </Router>
     );
