@@ -1,8 +1,19 @@
 import React from "react";
+import Header from "../../components/Header/Header";
+import Events from "../../components/Events/Events";
+import HowToGopizza from "../../components/HowToGopizza/HowToGopizza";
+import Application from "../../components/Application/Application";
 import "./Main.scss";
 
-const main = () => {
-  return <div></div>;
+const Main = () => {
+  return (
+    <>
+      <Header />
+      <Events />
+      <HowToGopizza />
+      <Application />
+    </>
+  );
 };
 
-export default main;
+export default Main;
