@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Fade from "react-reveal/Fade";
 import "./KakaoPlusBtn.scss";
 
 declare global {
@@ -17,7 +18,11 @@ const KakaoPlus = () => {
   }, []);
   console.log(window);
 
-  return <div id="plusfriend-addfriend-button"></div>;
+  return (
+    <Fade>
+      <div id="plusfriend-addfriend-button"></div>
+    </Fade>
+  );
 };
 
 export default KakaoPlus;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { InstaAPI } from "../../../config";
+import Fade from "react-reveal/Fade";
 import "./InstaConnect.scss";
 
 const InstaConnect = () => {
@@ -20,16 +21,18 @@ const InstaConnect = () => {
       <ul>
         {image
           .filter((img: any, idx: number) => {
-            return img && idx < 15;
+            return img && idx < 10;
           })
           .map((el: any) => {
             return (
-              <li>
-                <a href={el.permalink}>
-                  {" "}
-                  <img src={el.media_url} alt="" />
-                </a>
-              </li>
+              <Fade>
+                <li>
+                  <a href={el.permalink}>
+                    {" "}
+                    <img src={el.media_url} alt="" />
+                  </a>
+                </li>
+              </Fade>
             );
           })}
       </ul>
