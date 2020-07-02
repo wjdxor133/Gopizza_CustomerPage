@@ -1,0 +1,37 @@
+.MapList {
+  width: 100%;
+
+  .MapList-title {
+    display: flex;
+
+    .title1 {
+      width: 30%;
+    }
+    .title2 {
+      width: 20%;
+    }
+    .title3 {
+      width: 20%;
+    }
+    .title4 {
+      width: 30%;
+    }
+  }
+
+  .MapList-item {
+    display: flex;
+
+    .item1 {
+      width: 30%;
+    }
+    .item2 {
+      width: 20%;
+    }
+    .item3 {
+      width: 20%;
+    }
+    .item4 {
+      width: 30%;
+    }
+  }
+}
