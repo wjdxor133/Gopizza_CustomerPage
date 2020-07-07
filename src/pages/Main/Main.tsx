@@ -1,8 +1,8 @@
 import React from "react";
-// import Header from "../../components/Header/Header";
-// import Brand from "../../components/Brand/Brand";
+import Header from "../../components/Header/Header";
 import HowToGopizza from "../../components/HowToGopizza/HowToGopizza";
-// import Application from "../../components/Application/Application";
+import ApplicationKakao from "../../components/Application/ApplicationKakao";
+import ApplicationInsta from "../../components/Application/ApplicationInsta";
 import Footer from "../../components/Footer/Footer";
 import styled from "styled-components";
 import { BsSearch } from "react-icons/bs";
@@ -14,10 +14,10 @@ const Main = ({ history }) => {
   };
   return (
     <>
-      {/* <Header /> */}
-      {/* <Brand /> */}
+      <Header />
       <HowToGopizza />
-      {/* <Application /> */}
+      <ApplicationKakao />
+      <ApplicationInsta />
       <FindSection>
         <FindStore>
           <AlphaDiv>

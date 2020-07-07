@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import Fade from "react-reveal/Fade";
+import styled from "styled-components";
+// import Fade from "react-reveal/Fade";
 
 declare global {
   interface Window {
@@ -15,13 +17,22 @@ const KakaoPlus = () => {
       plusFriendId: "_dYsxjxb", // 플러스친구 홈 URL에 명시된 id로 설정합니다.
     });
   }, []);
-  console.log(window);
 
   return (
-    <Fade>
+    <KakaoBtn>
       <div id="plusfriend-addfriend-button"></div>
-    </Fade>
+    </KakaoBtn>
   );
 };
 
 export default KakaoPlus;
+
+const KakaoBtn = styled.div`
+  /* display: flex;
+  justify-content: center; */
+  position: relative;
+  z-index: 10;
+  div {
+    width: 5%;
+  }
+`;

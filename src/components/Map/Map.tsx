@@ -6,7 +6,6 @@ import MapList from "./MapList/MapList";
 import ModalPortal from "../Modal/ModalPortal";
 import NotNearStore from "../Modal/NotNearStore/NotNearStore";
 import styled from "styled-components";
-
 declare global {
   interface Window {
     kakao: any;
