@@ -1,10 +1,18 @@
 import { useLayoutEffect } from "react";
-export default function ScrollLock() {
-  const originalStyle = window.getComputedStyle(document.body).overflow;
-  document.body.style.overflow = "hidden";
-  return () => (document.body.style.overflow = originalStyle);
 
-  // useLayoutEffect(() => {
-  //   doStuff();
-  // }, []);
+// declare global {
+//   interface Window {
+//     Window: any;
+//   }
+// }
+
+export default function ScrollLock() {
+  //   useLayoutEffect(() => {
+  //     const originalStyle = async () => {
+  //       Window.getComputedStyle(document.body).overflow;
+  //       document.body.style.overflow = "hidden";
+  //       return () => (document.body.style.overflow = originalStyle);
+  //     };
+  //     originalStyle();
+  //   }, []);
 }

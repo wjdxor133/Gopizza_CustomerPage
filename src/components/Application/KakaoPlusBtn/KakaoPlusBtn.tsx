@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Fade from "react-reveal/Fade";
-import "./KakaoPlusBtn.scss";
 
 declare global {
   interface Window {

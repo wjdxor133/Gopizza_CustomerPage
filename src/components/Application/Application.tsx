@@ -2,7 +2,6 @@ import React from "react";
 import KakaoPlusBtn from "./KakaoPlusBtn/KakaoPlusBtn";
 import InstaConnect from "./InstaConnect/InstaConnect";
 import Fade from "react-reveal/Fade";
-import "./Application.scss";
 
 const Application = () => {
   return (

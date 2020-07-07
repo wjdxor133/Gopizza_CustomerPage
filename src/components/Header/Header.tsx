@@ -1,6 +1,5 @@
 import React from "react";
 import Fade from "react-reveal/Fade";
-import "./Header.scss";
 
 const Header = () => {
   return (

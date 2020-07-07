@@ -1,10 +1,9 @@
 import React from "react";
 import Fade from "react-reveal/Fade";
-import "./Events.scss";
 
-const Events = () => {
+const Brand = () => {
   return (
-    <section className="Events">
+    <section className="brand">
       <Fade top>
         <h1>프리 피자 데이 고지</h1>
       </Fade>
@@ -21,4 +20,4 @@ const Events = () => {
   );
 };
 
-export default Events;
+export default Brand;

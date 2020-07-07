@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { InstaAPI } from "../../../config";
 import Fade from "react-reveal/Fade";
-import "./InstaConnect.scss";
 
 const InstaConnect = () => {
   const [image, setImage] = useState<any>([]);
