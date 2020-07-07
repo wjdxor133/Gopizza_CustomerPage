@@ -54,7 +54,7 @@ const Content = styled.div`
 
 const TextWrap = styled.div`
   text-align: center;
-  margin-bottom: 65px;
+  margin-bottom: 55px;
   h1 {
     font-size: 2rem;
     font-weight: 800;

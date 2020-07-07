@@ -57,7 +57,6 @@ const ContentWrap = styled.div`
   width: 100vw;
   height: 60vh;
   background-color: #fff6e1;
-
   h1 {
     font-size: 1.5rem;
     font-family: "Roboto", sans-serif;

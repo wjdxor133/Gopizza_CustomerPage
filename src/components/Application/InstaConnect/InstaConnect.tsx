@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { InstaAPI } from "../../../config";
-// import Fade from "react-reveal/Fade";
 import styled from "styled-components";
 
 const InstaConnect = () => {
@@ -35,14 +34,13 @@ const InstaConnect = () => {
       </ul>
     </InstagramWrap>
   );
-  // <div id="instagram">{image}</div>;
 };
 export default InstaConnect;
 
 const InstagramWrap = styled.section`
   width: 100%;
   overflow: hidden;
-  margin-top: 65px;
+  margin-top: 55px;
   z-index: 10;
   ul {
     width: 60%;
