@@ -24,8 +24,9 @@ const ApplicationInsta = () => {
             팔로우하기 <i className="fas fa-chevron-right"></i>
           </Follow>
         </FollowWrpa>
-        <GradientOverlay />
+
         <InstaConnect />
+        <GradientOverlay />
       </Content>
     </ContentWrap>
   );

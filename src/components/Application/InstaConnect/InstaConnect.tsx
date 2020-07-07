@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { InstaAPI } from "../../../config";
-import Fade from "react-reveal/Fade";
+// import Fade from "react-reveal/Fade";
 import styled from "styled-components";
 
 const InstaConnect = () => {
@@ -24,14 +24,12 @@ const InstaConnect = () => {
           })
           .map((el: any) => {
             return (
-              <Fade>
-                <li>
-                  <a href={el.permalink}>
-                    {" "}
-                    <img src={el.media_url} alt="" />
-                  </a>
-                </li>
-              </Fade>
+              <li>
+                <a href={el.permalink}>
+                  {" "}
+                  <img src={el.media_url} alt="" />
+                </a>
+              </li>
             );
           })}
       </ul>
@@ -45,6 +43,7 @@ const InstagramWrap = styled.section`
   width: 100%;
   overflow: hidden;
   margin-top: 65px;
+  z-index: 10;
   ul {
     width: 60%;
     height: 50%;

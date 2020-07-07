@@ -27,8 +27,6 @@ const KakaoPlus = () => {
 export default KakaoPlus;
 
 const KakaoBtn = styled.div`
-  /* display: flex;
-  justify-content: center; */
   position: relative;
   z-index: 10;
   div {
