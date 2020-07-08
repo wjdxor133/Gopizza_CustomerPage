@@ -19,7 +19,7 @@ const Main = ({ history }) => {
     history.push("/Map");
   };
   return (
-    <>
+    <MainComponent>
       <Header />
       <Brand />
       <HowToGopizza />
@@ -45,28 +45,23 @@ const Main = ({ history }) => {
             <FindDeliveryImges>
               {/* 임시로 인라인 style 넣음 */}
               <div
-                style={{ backgroundColor: "red", width: "50%", color: "white" }}
-              >
-                검색창 이미지
-              </div>
-              <div
                 style={{
-                  backgroundColor: "blue",
-                  width: "25%",
+                  backgroundColor: "#f86d0d",
+                  width: "50%",
                   color: "white",
                 }}
               >
-                요기요
+                검색창
               </div>
-              <div
-                style={{
-                  backgroundColor: "green",
-                  width: "25%",
-                  color: "white",
-                }}
-              >
-                배달의 민족
-              </div>
+              <img
+                src="https://lh3.googleusercontent.com/NzeXFp0TGGcZoVSk_xzwdB567WurfscKr2j3pT5oKjWH00-tqBKF9LSnRK0sckgE7TQ=s180-rw
+                "
+                alt=""
+              ></img>
+              <img
+                src="https://lh3.googleusercontent.com/GeKNtsJ1KS94IOR8BfkzTyn8BGWomBkgqnokyBJX6AE0zpMm_gWub-nBl0KYnz8rTDU=s180-rw"
+                alt=""
+              ></img>
             </FindDeliveryImges>
             <FindDeliveryTitle>
               배달의민족과 요기요에서도
@@ -79,10 +74,11 @@ const Main = ({ history }) => {
         </FindDelivery>
       </FindSection>
       <Footer />
-    </>
+    </MainComponent>
   );
 };
 
+const MainComponent = styled.div``;
 const FindSection = styled.div`
   width: 100%;
   display: flex;
@@ -98,7 +94,7 @@ const FindStore = styled.div<imgProps>`
 
 const AlphaDiv = styled.div`
   background-color: rgba(255, 204, 167, 0.5);
-  padding: 2em 0;
+  padding: 3em;
 `;
 
 const FindStoreTitle = styled.p`
@@ -146,6 +142,12 @@ const FindDeliveryBox = styled.div`
 
 const FindDeliveryImges = styled.div`
   display: flex;
+
+  img {
+    width: 40px;
+    height: 40px;
+    margin-left: 0.5em;
+  }
 `;
 
 const FindDeliveryTitle = styled.p`
