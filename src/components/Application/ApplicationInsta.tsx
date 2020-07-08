@@ -24,8 +24,9 @@ const ApplicationInsta = () => {
             팔로우하기 <i className="fas fa-chevron-right"></i>
           </Follow>
         </FollowWrpa>
-        <GradientOverlay />
+
         <InstaConnect />
+        <GradientOverlay />
       </Content>
     </ContentWrap>
   );
@@ -53,7 +54,7 @@ const Content = styled.div`
 
 const TextWrap = styled.div`
   text-align: center;
-  margin-bottom: 65px;
+  margin-bottom: 55px;
   h1 {
     font-size: 2rem;
     font-weight: 800;
