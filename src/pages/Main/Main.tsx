@@ -1,12 +1,18 @@
 import React from "react";
 import Header from "../../components/Header/Header";
+import Brand from "../../components/Brand/Brand";
 import HowToGopizza from "../../components/HowToGopizza/HowToGopizza";
 import ApplicationKakao from "../../components/Application/ApplicationKakao";
 import ApplicationInsta from "../../components/Application/ApplicationInsta";
 import Footer from "../../components/Footer/Footer";
 import styled from "styled-components";
+import naverBrandLocation from "../../img/naver_brand_location.jpg";
 import { BsSearch } from "react-icons/bs";
 import { MdKeyboardArrowRight } from "react-icons/md";
+
+type imgProps = {
+  img: string;
+};
 
 const Main = ({ history }) => {
   const gotoMap = () => {
@@ -15,11 +21,12 @@ const Main = ({ history }) => {
   return (
     <>
       <Header />
+      <Brand />
       <HowToGopizza />
       <ApplicationKakao />
       <ApplicationInsta />
       <FindSection>
-        <FindStore>
+        <FindStore img={naverBrandLocation}>
           <AlphaDiv>
             <FindStoreTitle>
               내 주변 가장 가까운
@@ -37,9 +44,29 @@ const Main = ({ history }) => {
           <FindDeliveryBox>
             <FindDeliveryImges>
               {/* 임시로 인라인 style 넣음 */}
-              <div style={{ backgroundColor: "red", width: "50%" }}>h1</div>
-              <div style={{ backgroundColor: "blue", width: "25%" }}>h2</div>
-              <div style={{ backgroundColor: "green", width: "25%" }}>h3</div>
+              <div
+                style={{ backgroundColor: "red", width: "50%", color: "white" }}
+              >
+                검색창 이미지
+              </div>
+              <div
+                style={{
+                  backgroundColor: "blue",
+                  width: "25%",
+                  color: "white",
+                }}
+              >
+                요기요
+              </div>
+              <div
+                style={{
+                  backgroundColor: "green",
+                  width: "25%",
+                  color: "white",
+                }}
+              >
+                배달의 민족
+              </div>
             </FindDeliveryImges>
             <FindDeliveryTitle>
               배달의민족과 요기요에서도
@@ -63,14 +90,14 @@ const FindSection = styled.div`
   align-items: center;
 `;
 
-const FindStore = styled.div`
+const FindStore = styled.div<imgProps>`
   width: 50%;
-  background-image: url("https://www.gopizza.kr/wp-content/uploads/2019/03/pizza-spicy-cheese-chicken-400x300.jpg");
+  background-image: url(${(props) => props.img && props.img});
   text-align: center;
 `;
 
 const AlphaDiv = styled.div`
-  background-color: rgba(255, 204, 167, 0.3);
+  background-color: rgba(255, 204, 167, 0.5);
   padding: 2em 0;
 `;
 

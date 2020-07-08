@@ -70,7 +70,7 @@ const MainText = styled.div`
 
 const ImgContainer = styled.div`
   width: 100%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   position: relative;
   padding: 50px 0 50px 0;
   img {
