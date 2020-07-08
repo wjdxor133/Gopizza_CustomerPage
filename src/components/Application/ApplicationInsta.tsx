@@ -16,7 +16,6 @@ const ApplicationInsta = () => {
         </TextWrap>
         <FollowWrpa href={"https://www.instagram.com/gopizza.kr/?hl=ko"}>
           <Gopizza>
-            {/* <img src={instagram_Icon} /> */}
             <i className="fab fa-instagram"></i>
             #고피자
           </Gopizza>
@@ -24,7 +23,6 @@ const ApplicationInsta = () => {
             팔로우하기 <i className="fas fa-chevron-right"></i>
           </Follow>
         </FollowWrpa>
-
         <InstaConnect />
         <GradientOverlay />
       </Content>
@@ -69,7 +67,7 @@ const TextBoxWrap = styled.div`
   width: 100%;
 `;
 
-const TextBoxOrange = styled.div`
+const TextBoxOrange = styled.p`
   width: 17%;
   margin-left: auto;
   padding: 5px 10px;
@@ -78,7 +76,7 @@ const TextBoxOrange = styled.div`
   font-size: 1.8rem;
   font-weight: 700;
 `;
-const TextBoxWhite = styled.div`
+const TextBoxWhite = styled.p`
   width: 15%;
   padding: 5px 10px;
   margin-right: auto;

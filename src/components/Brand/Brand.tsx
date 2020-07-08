@@ -93,6 +93,9 @@ const Video01Btn = styled.button`
   color: #fff;
   border-radius: 3px;
   font-family: "Roboto", sans-serif;
+  &:hover {
+    background-color: #f86d0d;
+  }
 `;
 const Video02Btn = styled.button`
   width: 70px;
@@ -101,6 +104,9 @@ const Video02Btn = styled.button`
   color: #fff;
   border-radius: 3px;
   font-family: "Roboto", sans-serif;
+  &:hover {
+    background-color: #f86d0d;
+  }
 `;
 const Video03Btn = styled.button`
   width: 70px;
@@ -109,6 +115,9 @@ const Video03Btn = styled.button`
   color: #fff;
   border-radius: 3px;
   font-family: "Roboto", sans-serif;
+  &:hover {
+    background-color: #f86d0d;
+  }
 `;
 const Video04Btn = styled.button`
   width: 70px;
@@ -117,6 +126,9 @@ const Video04Btn = styled.button`
   color: #fff;
   border-radius: 3px;
   font-family: "Roboto", sans-serif;
+  &:hover {
+    background-color: #f86d0d;
+  }
 `;
 
 const Iframe = styled.iframe`

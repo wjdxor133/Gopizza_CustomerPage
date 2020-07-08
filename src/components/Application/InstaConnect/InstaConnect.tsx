@@ -49,16 +49,11 @@ const InstagramWrap = styled.section`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px 10px;
-
-    /* display: flex;
-    flex-wrap: wrap; */
     justify-content: center;
-    /* align-content: space-space; */
     li {
       img {
         width: 100%;
         height: 100%;
-        /* margin: 10px; */
       }
     }
   }
