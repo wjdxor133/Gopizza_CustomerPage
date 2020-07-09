@@ -12,15 +12,19 @@ const Header = () => {
           <h1>고퀄1인피자</h1>
           <h2>GOPIZZA</h2>
         </MainText>
-        <ImgContainer>
-          <img src={HeaderImg} alt="" />
-        </ImgContainer>
-        <SubText>
-          <Text1>느리고, 비싸고, 큰 피자, NO!</Text1>
-          <Text2>
-            고퀄1인피자 <p> 고피자</p>가 딱!
-          </Text2>
-        </SubText>
+        <Fade bottom>
+          <ImgContainer>
+            <img src={HeaderImg} alt="" />
+          </ImgContainer>
+        </Fade>
+        <Fade bottom>
+          <SubText>
+            <Text1>느리고, 비싸고, 큰 피자, NO!</Text1>
+            <Text2>
+              고퀄1인피자 <p> 고피자</p>가 딱!
+            </Text2>
+          </SubText>
+        </Fade>
       </Container>
     </Headers>
   );
@@ -28,7 +32,7 @@ const Header = () => {
 export default Header;
 
 const Headers = styled.section`
-  width: 100vw;
+  width: 100%;
   height: 80vh;
   position: relative;
 `;

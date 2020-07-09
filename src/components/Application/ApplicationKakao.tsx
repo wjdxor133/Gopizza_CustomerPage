@@ -15,7 +15,6 @@ const ApplicationKakao = () => {
         <img src={kakaoPlus} alt="" />
       </KakaoPlusImg>
       <BtnWrap>
-        <p>클릭하고, 바로 고피자 톡채널 추가하기!</p>
         <KakaoPlusBtn />
       </BtnWrap>
     </ContentWrap>
@@ -25,7 +24,7 @@ const ApplicationKakao = () => {
 export default ApplicationKakao;
 
 const ContentWrap = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 70vh;
   position: relative;
 `;
@@ -71,12 +70,6 @@ const KakaoPlusImg = styled.div`
 
 const BtnWrap = styled.div`
   position: relative;
-  left: 27%;
-  top: 30%;
-  p {
-    font-size: 1.5rem;
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    color: #4c2003;
-  }
+  left: 26.5%;
+  top: 65%;
 `;

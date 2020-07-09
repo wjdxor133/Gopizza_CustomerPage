@@ -75,7 +75,6 @@ const Map = () => {
         setGopizzaMap(map);
 
         const markers = result.map((store: any) => {
-          // console.log("store", store);
           const imageSize = new window.kakao.maps.Size(64, 69);
           const markerImage = new window.kakao.maps.MarkerImage(
             imageSrc,
@@ -93,7 +92,6 @@ const Map = () => {
           });
         });
 
-        // console.log("markers", markers);
         setData({
           ...data,
           storeMarkers: markers,
@@ -111,8 +109,6 @@ const Map = () => {
 
   // 현재 위치에 가까운 매장 리스트
   const currentStoreAPI = async (currentLat, currentLon) => {
-    console.log("currentLat", currentLat);
-    console.log("currentLon", currentLon);
     const result = (
       await axios.get(StoreAPI, {
         params: {
@@ -121,23 +117,11 @@ const Map = () => {
         },
       })
     ).data.data;
-    // const result = (
-    //   await (await axios.get(StoreAPI, {
-    //     params: {
-    //       lat: currentLat,
-    //       lng: currentLon,
-    //     },
-    //   }))
-    // .data.data;
-    console.log("result", result);
     setStoreList(result);
   };
 
   // 5km 이내에 매장 마커 띄우는 함수 호출
   const nearStore = async (storeLocation) => {
-    // console.log("nearStore", currentLon);
-    // console.log("nearStore", currentLat);
-
     // 가까운 매장 반경 범위(km)
     const radius = 5000;
 
@@ -152,8 +136,6 @@ const Map = () => {
 
       return dist < radius;
     });
-
-    // console.log("markers", nearMarkers);
 
     if (nearMarkers.length > 0) {
       // 매장 전체 마커 지우기
@@ -223,7 +205,7 @@ const Map = () => {
 
     gopizzaMap.panTo(moveLatLon);
 
-    const iwContent = `<div style="padding:7px; height:70px;">가까운 매장은 ${storeList[0].name} 입니다.<br/> 클릭해주세요!</div>`,
+    const iwContent = `<div style="padding:7px; height:70px;">가까운 매장은 ${storeList[0].name} 입니다.<br/> 마커를 클릭해주세요!</div>`,
       iwRemoveable = true;
 
     const infowindow = new window.kakao.maps.InfoWindow({
