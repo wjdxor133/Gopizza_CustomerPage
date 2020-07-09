@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Fade from "react-reveal/Fade";
 import styled from "styled-components";
 import { VideoConfig } from "../../config";
 

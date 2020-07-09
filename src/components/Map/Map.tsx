@@ -38,8 +38,8 @@ const Map = () => {
   // 매장 API
   const storeInfoAPI = async () => {
     // 목데이터 /data/locationData.json
-    const result = await (await axios.get("/data/locationData.json")).data.data;
-    // const result = await (await axios.get(StoreAPI)).data.data;
+    // const result = await (await axios.get("/data/locationData.json")).data.data;
+    const result = (await axios.get(StoreAPI)).data.data;
     KakaoMap(result);
   };
 
@@ -48,10 +48,8 @@ const Map = () => {
     storeInfoAPI();
   }, []);
 
-  // 현재 위도,경도가 바뀌면 다시 화면이 그려지게 설정
-  // useEffect(() => {
-  //   currentStoreAPI();
-  // }, [currentLat, currentLon]);
+  //현재 위도,경도가 바뀌면 다시 화면이 그려지게 설정
+  useEffect(() => {}, [currentLat, currentLon]);
 
   // 맵을 그리는 함수
   const KakaoMap = (result) => {
@@ -112,10 +110,9 @@ const Map = () => {
   };
 
   // 현재 위치에 가까운 매장 리스트
-  const currentStoreAPI = async () => {
+  const currentStoreAPI = async (currentLat, currentLon) => {
     console.log("currentLat", currentLat);
     console.log("currentLon", currentLon);
-
     const result = (
       await axios.get(StoreAPI, {
         params: {
@@ -124,6 +121,14 @@ const Map = () => {
         },
       })
     ).data.data;
+    // const result = (
+    //   await (await axios.get(StoreAPI, {
+    //     params: {
+    //       lat: currentLat,
+    //       lng: currentLon,
+    //     },
+    //   }))
+    // .data.data;
     console.log("result", result);
     setStoreList(result);
   };
@@ -204,6 +209,7 @@ const Map = () => {
 
         // 5km 이내에 매장 마커 띄우는 함수 호출
         nearStore(storeMarkers);
+        currentStoreAPI(lat, lon);
       });
     }
   };
