@@ -1,25 +1,34 @@
 import React from "react";
 import Header from "../../components/Header/Header";
+import Brand from "../../components/Brand/Brand";
 import HowToGopizza from "../../components/HowToGopizza/HowToGopizza";
 import ApplicationKakao from "../../components/Application/ApplicationKakao";
 import ApplicationInsta from "../../components/Application/ApplicationInsta";
 import Footer from "../../components/Footer/Footer";
 import styled from "styled-components";
+import naverBrandLocation from "../../img/naver_brand_location.jpg";
 import { BsSearch } from "react-icons/bs";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import woowa from "../../img/woowa.png";
+import yogiyo from "../../img/yogiyo.png";
+
+type imgProps = {
+  img: string;
+};
 
 const Main = ({ history }) => {
   const gotoMap = () => {
     history.push("/Map");
   };
   return (
-    <>
+    <MainComponent>
       <Header />
+      <Brand />
       <HowToGopizza />
       <ApplicationKakao />
       <ApplicationInsta />
       <FindSection>
-        <FindStore>
+        <FindStore img={naverBrandLocation}>
           <AlphaDiv>
             <FindStoreTitle>
               내 주변 가장 가까운
@@ -38,8 +47,26 @@ const Main = ({ history }) => {
             <FindDeliveryImges>
               {/* 임시로 인라인 style 넣음 */}
               <div style={{ backgroundColor: "red", width: "50%" }}>h1</div>
-              <div style={{ backgroundColor: "blue", width: "25%" }}>h2</div>
-              <div style={{ backgroundColor: "green", width: "25%" }}>h3</div>
+              <ImgWoowa src={woowa}></ImgWoowa>
+              <ImgYogiyo src={yogiyo}></ImgYogiyo>
+              <div
+                style={{
+                  backgroundColor: "#f86d0d",
+                  width: "50%",
+                  color: "white",
+                }}
+              >
+                검색창
+              </div>
+              <img
+                src="https://lh3.googleusercontent.com/NzeXFp0TGGcZoVSk_xzwdB567WurfscKr2j3pT5oKjWH00-tqBKF9LSnRK0sckgE7TQ=s180-rw
+                "
+                alt=""
+              ></img>
+              <img
+                src="https://lh3.googleusercontent.com/GeKNtsJ1KS94IOR8BfkzTyn8BGWomBkgqnokyBJX6AE0zpMm_gWub-nBl0KYnz8rTDU=s180-rw"
+                alt=""
+              ></img>
             </FindDeliveryImges>
             <FindDeliveryTitle>
               배달의민족과 요기요에서도
@@ -52,10 +79,11 @@ const Main = ({ history }) => {
         </FindDelivery>
       </FindSection>
       <Footer />
-    </>
+    </MainComponent>
   );
 };
 
+const MainComponent = styled.div``;
 const FindSection = styled.div`
   width: 100%;
   display: flex;
@@ -63,15 +91,15 @@ const FindSection = styled.div`
   align-items: center;
 `;
 
-const FindStore = styled.div`
+const FindStore = styled.div<imgProps>`
   width: 50%;
-  background-image: url("https://www.gopizza.kr/wp-content/uploads/2019/03/pizza-spicy-cheese-chicken-400x300.jpg");
+  background-image: url(${(props) => props.img && props.img});
   text-align: center;
 `;
 
 const AlphaDiv = styled.div`
-  background-color: rgba(255, 204, 167, 0.3);
-  padding: 2em 0;
+  background-color: rgba(255, 204, 167, 0.5);
+  padding: 3em;
 `;
 
 const FindStoreTitle = styled.p`
@@ -119,6 +147,24 @@ const FindDeliveryBox = styled.div`
 
 const FindDeliveryImges = styled.div`
   display: flex;
+
+  img {
+    width: 40px;
+    height: 40px;
+    margin-left: 0.5em;
+  }
+`;
+
+const ImgWoowa = styled.img`
+  width: 35px;
+  height: 35px;
+  margin: 0 8px;
+  border-radius: 5px;
+`;
+
+const ImgYogiyo = styled.img`
+  width: 35px;
+  height: 35px;
 `;
 
 const FindDeliveryTitle = styled.p`

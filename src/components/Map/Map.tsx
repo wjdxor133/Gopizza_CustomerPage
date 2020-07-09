@@ -21,7 +21,6 @@ interface MapStateType {
 }
 
 const Map = () => {
-  // useState() 여러개의 state를 하나로 선언
   const imageSrc: string =
     "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png";
   const [gopizzaMap, setGopizzaMap] = useState<any>(); // 지도 생성 후 담은 변수
@@ -40,13 +39,17 @@ const Map = () => {
   const storeInfoAPI = async () => {
     // 목데이터 /data/locationData.json
     // const result = await (await axios.get("/data/locationData.json")).data.data;
-    const result = await (await axios.get(StoreAPI)).data.data;
+    const result = (await axios.get(StoreAPI)).data.data;
     KakaoMap(result);
   };
 
+  // API 한번만 받아올 수 있게 설정
   useEffect(() => {
     storeInfoAPI();
   }, []);
+
+  //현재 위도,경도가 바뀌면 다시 화면이 그려지게 설정
+  useEffect(() => {}, [currentLat, currentLon]);
 
   // 맵을 그리는 함수
   const KakaoMap = (result) => {
@@ -66,33 +69,31 @@ const Map = () => {
         };
 
         const map = new window.kakao.maps.Map(container, options);
-        // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
         const zoomControl = new window.kakao.maps.ZoomControl();
         map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
 
         setGopizzaMap(map);
 
         const markers = result.map((store: any) => {
-          console.log("store", store);
-          // 마커 이미지의 이미지 크기
+          // console.log("store", store);
           const imageSize = new window.kakao.maps.Size(64, 69);
-          // 마커 이미지를 생성
           const markerImage = new window.kakao.maps.MarkerImage(
             imageSrc,
             imageSize
           );
 
           return new window.kakao.maps.Marker({
+            clickable: true,
             position: new window.kakao.maps.LatLng(
               Number(store.latlng[0]),
               Number(store.latlng[1])
-            ), // 마커를 표시할 위치
-            title: store.name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시
-            image: markerImage, // 마커 이미지
+            ),
+            title: store.name,
+            image: markerImage,
           });
         });
 
-        console.log("markers", markers);
+        // console.log("markers", markers);
         setData({
           ...data,
           storeMarkers: markers,
@@ -108,8 +109,11 @@ const Map = () => {
     };
   };
 
-  const currentStoreAPI = async () => {
-    const result = await (
+  // 현재 위치에 가까운 매장 리스트
+  const currentStoreAPI = async (currentLat, currentLon) => {
+    console.log("currentLat", currentLat);
+    console.log("currentLon", currentLon);
+    const result = (
       await axios.get(StoreAPI, {
         params: {
           lat: currentLat,
@@ -117,31 +121,26 @@ const Map = () => {
         },
       })
     ).data.data;
-    console.log(result);
+    // const result = (
+    //   await (await axios.get(StoreAPI, {
+    //     params: {
+    //       lat: currentLat,
+    //       lng: currentLon,
+    //     },
+    //   }))
+    // .data.data;
+    console.log("result", result);
     setStoreList(result);
-    console.log(result);
-
-    // axios
-    //   .get("/data/locationData.json")
-    //   .then((res) => {
-    //     console.log("axiosMapList", res);
-    //     setStoreList(res.data.data);
-    //     console.log("axiosMapList", storeList);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   };
 
   // 5km 이내에 매장 마커 띄우는 함수 호출
   const nearStore = async (storeLocation) => {
-    // console.log("currentLon", currentLon);
-    // console.log("currentLat", currentLat);
+    // console.log("nearStore", currentLon);
+    // console.log("nearStore", currentLat);
 
     // 가까운 매장 반경 범위(km)
     const radius = 5000;
 
-    // filter 적용
     const nearMarkers = await storeLocation.filter((m: any) => {
       const c1 = gopizzaMap.getCenter(); // 현재 좌표
       const c2 = m.getPosition(); // 매장 좌표
@@ -150,24 +149,26 @@ const Map = () => {
       });
 
       const dist = poly.getLength(); // 매장 거리
-      // console.log("m", m);
 
       return dist < radius;
     });
 
     // console.log("markers", nearMarkers);
+
     if (nearMarkers.length > 0) {
+      // 매장 전체 마커 지우기
       storeLocation.map((m: any) => {
         return m.setMap(null);
       });
 
+      // 가까운 매장 마커만 그리기
       nearMarkers.map((m: any) => {
         return m.setMap(gopizzaMap);
       });
-      alert("가까운 매장은 " + nearMarkers[0].mc + "입니다");
-      setShowModal(true);
+
       setData({
         ...data,
+        storeMarkers: nearMarkers,
         order: true,
       });
     } else {
@@ -176,7 +177,7 @@ const Map = () => {
   };
 
   // 현재 내 위치 마커
-  const currentMark = () => {
+  const currentMark = async () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         // 내 현재 위치의 위도, 경도
@@ -188,61 +189,79 @@ const Map = () => {
           currentLon: lon,
         });
 
-        // 이동할 위도 경도 위치를 생성합니다
-        var moveLatLon = new window.kakao.maps.LatLng(lat, lon);
-
-        // 지도 중심을 부드럽게 이동시킵니다
-        // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+        const moveLatLon = new window.kakao.maps.LatLng(lat, lon);
         gopizzaMap.panTo(moveLatLon);
 
-        //현재 위치 마커 생성
         const marker = new window.kakao.maps.Marker({
           position: moveLatLon,
         });
 
-        // 인포윈도우에 표시할 내용
         const iwContent = '<div style="padding:5px;">여기에 계신가요?</div>',
           iwRemoveable = true;
 
-        // 인포윈도우를 생성한다.
         const infowindow = new window.kakao.maps.InfoWindow({
           content: iwContent,
           removable: iwRemoveable,
         });
 
-        // 인포윈도우를 마커위에 표시한다.
         infowindow.open(gopizzaMap, marker);
-
-        // marker 표시
         marker.setMap(gopizzaMap);
 
         // 5km 이내에 매장 마커 띄우는 함수 호출
         nearStore(storeMarkers);
-        currentStoreAPI();
+        currentStoreAPI(lat, lon);
       });
     }
   };
 
+  // 가장 가까운 매장 마커 보여주기
+  const NearestStoreMarks = () => {
+    const moveLatLon = new window.kakao.maps.LatLng(
+      storeList[0].latlng[0],
+      storeList[0].latlng[1]
+    );
+
+    gopizzaMap.panTo(moveLatLon);
+
+    const iwContent = `<div style="padding:7px; height:70px;">가까운 매장은 ${storeList[0].name} 입니다.<br/> 클릭해주세요!</div>`,
+      iwRemoveable = true;
+
+    const infowindow = new window.kakao.maps.InfoWindow({
+      content: iwContent,
+      removable: iwRemoveable,
+    });
+
+    infowindow.open(gopizzaMap, storeMarkers[0]);
+
+    // 가장 가까운 매장 마커 클릭시 모달창 띄우기
+    window.kakao.maps.event.addListener(storeMarkers[0], "click", () => {
+      setShowModal(true);
+    });
+  };
+
   return (
     // 지도가 띄어질 부분
-    <>
-      <MapComponent>
-        {showModal ? (
-          <ModalPortal elementId="modal">
-            <NotNearStore
-              setShowModal={setShowModal}
-              showModal={showModal}
-              order={order}
-            />
-          </ModalPortal>
-        ) : null}
-        <KakaoMapBox>
-          <StoreMap id="Map-Mymap"></StoreMap>
-          <StoreSearchBtn onClick={currentMark}>내 현재 위치</StoreSearchBtn>
-        </KakaoMapBox>
-        <MapList storeList={storeList} />
-      </MapComponent>
-    </>
+    <MapComponent>
+      {showModal ? (
+        <ModalPortal elementId="modal">
+          <NotNearStore
+            setShowModal={setShowModal}
+            showModal={showModal}
+            order={order}
+          />
+        </ModalPortal>
+      ) : null}
+      <KakaoMapBox>
+        <StoreMap id="Map-Mymap"></StoreMap>
+      </KakaoMapBox>
+      <BtnBox>
+        <StoreSearchBtn onClick={currentMark}>내 현재 위치</StoreSearchBtn>
+        <StoreSearchBtn onClick={NearestStoreMarks}>
+          가까운 매장으로 이동!
+        </StoreSearchBtn>
+      </BtnBox>
+      <MapList storeList={storeList} />
+    </MapComponent>
   );
 };
 
@@ -263,7 +282,19 @@ const StoreMap = styled.div`
   height: 500px;
 `;
 
+const BtnBox = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 const StoreSearchBtn = styled.button`
-  background-color: black;
+  background-color: #f86d0d;
   color: white;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin-left: 1em;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

@@ -31,7 +31,6 @@ const Headers = styled.section`
   width: 100vw;
   height: 80vh;
   position: relative;
-  /* background-color: #fce7d9; */
 `;
 
 const Container = styled.div`
@@ -70,7 +69,6 @@ const MainText = styled.div`
 
 const ImgContainer = styled.div`
   width: 100%;
-  /* margin: 0 auto; */
   position: relative;
   padding: 50px 0 50px 0;
   img {

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import InstaConnect from "./InstaConnect/InstaConnect";
-import instagram_Icon from "../../img/instagram_Icon.png";
 
 const ApplicationInsta = () => {
   return (
@@ -14,9 +13,8 @@ const ApplicationInsta = () => {
             <TextBoxWhite>팔로우 GO!</TextBoxWhite>
           </TextBoxWrap>
         </TextWrap>
-        <FollowWrpa href={"https://www.instagram.com/gopizza.kr/?hl=ko"}>
+        <FollowWrpa>
           <Gopizza>
-            {/* <img src={instagram_Icon} /> */}
             <i className="fab fa-instagram"></i>
             #고피자
           </Gopizza>
@@ -24,7 +22,6 @@ const ApplicationInsta = () => {
             팔로우하기 <i className="fas fa-chevron-right"></i>
           </Follow>
         </FollowWrpa>
-
         <InstaConnect />
         <GradientOverlay />
       </Content>
@@ -69,8 +66,7 @@ const TextBoxWrap = styled.div`
   width: 100%;
 `;
 
-const TextBoxOrange = styled.div`
-  width: 17%;
+const TextBoxOrange = styled.span`
   margin-left: auto;
   padding: 5px 10px;
   color: #fff;
@@ -78,8 +74,7 @@ const TextBoxOrange = styled.div`
   font-size: 1.8rem;
   font-weight: 700;
 `;
-const TextBoxWhite = styled.div`
-  width: 15%;
+const TextBoxWhite = styled.span`
   padding: 5px 10px;
   margin-right: auto;
   color: #ff6602;
@@ -88,8 +83,7 @@ const TextBoxWhite = styled.div`
   font-weight: 700;
 `;
 
-const FollowWrpa = styled.a`
-  width: 14.2%;
+const FollowWrpa = styled.span`
   margin: 0 auto;
   display: flex;
   font-size: 0.88rem;
@@ -99,7 +93,7 @@ const FollowWrpa = styled.a`
   border-radius: 30px;
   background-color: #492c19;
 `;
-const Gopizza = styled.div`
+const Gopizza = styled.span`
   color: #ff6602;
   display: flex;
   i {
@@ -109,7 +103,7 @@ const Gopizza = styled.div`
     margin-right: 6px;
   }
 `;
-const Follow = styled.div`
+const Follow = styled.span`
   color: #fff;
   padding-left: 5px;
   display: flex;

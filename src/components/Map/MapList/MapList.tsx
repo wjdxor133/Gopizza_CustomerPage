@@ -6,34 +6,34 @@ interface MapListProps {
 
 const MapList = ({ storeList }: MapListProps) => {
   return (
-    <>
-      <MapListComponent>
-        <MapListTable>
-          <TrTag>
-            <Thead>
-              <ThTag>매장명/주소</ThTag>
-              <ThTag>전화번호</ThTag>
-              <ThTag>영업시간</ThTag>
-              <ThTag>이용가능 서비스</ThTag>
-            </Thead>
-          </TrTag>
+    <MapListComponent>
+      <MapListTable>
+        <Thead>
+          <TitleTrTag>
+            <ThTag>매장명/주소</ThTag>
+            <ThTag>전화번호</ThTag>
+            <ThTag>영업시간</ThTag>
+            <ThTag>이용가능 서비스</ThTag>
+          </TitleTrTag>
+        </Thead>
+      </MapListTable>
+      <MapListTable>
+        <Tbody>
           <ScrollBox>
-            <Tbody>
-              {storeList.map((store: any, idx: number) => {
-                return (
-                  <TrTag key={idx}>
-                    <TdTag>{store.name}</TdTag>
-                    <TdTag>{store.tel}</TdTag>
-                    <TdTag>{store.hours}</TdTag>
-                    <TdTag>아직 미정</TdTag>
-                  </TrTag>
-                );
-              })}
-            </Tbody>
+            {storeList.map((store: any, idx: number) => {
+              return (
+                <TrTag key={idx}>
+                  <TdTag>{store.name}</TdTag>
+                  <TdTag>{store.tel}</TdTag>
+                  <TdTag>{store.hours}</TdTag>
+                  <TdTag>아직 미정</TdTag>
+                </TrTag>
+              );
+            })}
           </ScrollBox>
-        </MapListTable>
-      </MapListComponent>
-    </>
+        </Tbody>
+      </MapListTable>
+    </MapListComponent>
   );
 };
 
@@ -41,7 +41,6 @@ export default MapList;
 
 const MapListComponent = styled.div`
   width: 100%;
-  overflow-y: scroll;
 `;
 
 const MapListTable = styled.table`
@@ -51,20 +50,41 @@ const MapListTable = styled.table`
 
 const Thead = styled.thead``;
 
-const Tbody = styled.tbody`
-  width: 70%;
-  height: 900px;
-`;
+const Tbody = styled.tbody``;
 
 const ScrollBox = styled.div`
+  width: 100%;
   overflow-y: scroll;
+  height: 300px;
 `;
 
 const ThTag = styled.th``;
 
-const TrTag = styled.tr``;
+const TitleTrTag = styled.tr``;
+
+const TrTag = styled.tr`
+  display: flex;
+  justify-content: space-around;
+
+  margin-left: 7em;
+`;
 
 const TdTag = styled.td`
   width: 25%;
-  text-align: center;
+
+  &:nth-child(1) {
+    margin-left: 0em;
+  }
+
+  &:nth-child(2) {
+    margin-left: -2em;
+  }
+
+  &:nth-child(3) {
+    margin-left: -2.5em;
+  }
+
+  &:nth-child(4) {
+    margin-left: 2em;
+  }
 `;
