@@ -3,10 +3,13 @@ import Header from "../../components/Header/Header";
 import HowToGopizza from "../../components/HowToGopizza/HowToGopizza";
 import ApplicationKakao from "../../components/Application/ApplicationKakao";
 import ApplicationInsta from "../../components/Application/ApplicationInsta";
+import Brand from "../../components/Brand/Brand";
 import Footer from "../../components/Footer/Footer";
 import styled from "styled-components";
 import { BsSearch } from "react-icons/bs";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import woowa from "../../img/woowa.png";
+import yogiyo from "../../img/yogiyo.png";
 
 const Main = ({ history }) => {
   const gotoMap = () => {
@@ -15,6 +18,7 @@ const Main = ({ history }) => {
   return (
     <>
       <Header />
+      <Brand />
       <HowToGopizza />
       <ApplicationKakao />
       <ApplicationInsta />
@@ -38,8 +42,8 @@ const Main = ({ history }) => {
             <FindDeliveryImges>
               {/* 임시로 인라인 style 넣음 */}
               <div style={{ backgroundColor: "red", width: "50%" }}>h1</div>
-              <div style={{ backgroundColor: "blue", width: "25%" }}>h2</div>
-              <div style={{ backgroundColor: "green", width: "25%" }}>h3</div>
+              <ImgWoowa src={woowa}></ImgWoowa>
+              <ImgYogiyo src={yogiyo}></ImgYogiyo>
             </FindDeliveryImges>
             <FindDeliveryTitle>
               배달의민족과 요기요에서도
@@ -119,6 +123,18 @@ const FindDeliveryBox = styled.div`
 
 const FindDeliveryImges = styled.div`
   display: flex;
+`;
+
+const ImgWoowa = styled.img`
+  width: 35px;
+  height: 35px;
+  margin: 0 8px;
+  border-radius: 5px;
+`;
+
+const ImgYogiyo = styled.img`
+  width: 35px;
+  height: 35px;
 `;
 
 const FindDeliveryTitle = styled.p`
