@@ -49,24 +49,6 @@ const Main = ({ history }) => {
               <div style={{ backgroundColor: "red", width: "50%" }}>h1</div>
               <ImgWoowa src={woowa}></ImgWoowa>
               <ImgYogiyo src={yogiyo}></ImgYogiyo>
-              <div
-                style={{
-                  backgroundColor: "#f86d0d",
-                  width: "50%",
-                  color: "white",
-                }}
-              >
-                검색창
-              </div>
-              <img
-                src="https://lh3.googleusercontent.com/NzeXFp0TGGcZoVSk_xzwdB567WurfscKr2j3pT5oKjWH00-tqBKF9LSnRK0sckgE7TQ=s180-rw
-                "
-                alt=""
-              ></img>
-              <img
-                src="https://lh3.googleusercontent.com/GeKNtsJ1KS94IOR8BfkzTyn8BGWomBkgqnokyBJX6AE0zpMm_gWub-nBl0KYnz8rTDU=s180-rw"
-                alt=""
-              ></img>
             </FindDeliveryImges>
             <FindDeliveryTitle>
               배달의민족과 요기요에서도

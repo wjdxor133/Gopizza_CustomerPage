@@ -54,7 +54,7 @@ const Brand = () => {
 export default Brand;
 
 const ContentWrap = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 60vh;
   background-color: #fff6e1;
   h1 {
@@ -93,7 +93,9 @@ const Video01Btn = styled.button`
   color: #fff;
   border-radius: 3px;
   font-family: "Roboto", sans-serif;
+  margin-left: 0.3em;
   &:hover {
+    cursor: pointer;
     background-color: #f86d0d;
   }
 `;
@@ -104,7 +106,9 @@ const Video02Btn = styled.button`
   color: #fff;
   border-radius: 3px;
   font-family: "Roboto", sans-serif;
+  margin-left: 0.3em;
   &:hover {
+    cursor: pointer;
     background-color: #f86d0d;
   }
 `;
@@ -115,7 +119,9 @@ const Video03Btn = styled.button`
   color: #fff;
   border-radius: 3px;
   font-family: "Roboto", sans-serif;
+  margin-left: 0.3em;
   &:hover {
+    cursor: pointer;
     background-color: #f86d0d;
   }
 `;
@@ -126,7 +132,9 @@ const Video04Btn = styled.button`
   color: #fff;
   border-radius: 3px;
   font-family: "Roboto", sans-serif;
+  margin-left: 0.3em;
   &:hover {
+    cursor: pointer;
     background-color: #f86d0d;
   }
 `;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { InstaAPI } from "../../../config";
+import Fade from "react-reveal/Fade";
 import styled from "styled-components";
 
 const InstaConnect = () => {
@@ -16,22 +17,24 @@ const InstaConnect = () => {
   }, []);
   return (
     <InstagramWrap>
-      <ul>
-        {image
-          .filter((img: any, idx: number) => {
-            return img && idx < 6;
-          })
-          .map((el: any) => {
-            return (
-              <li>
-                <a href={el.permalink}>
-                  {" "}
-                  <img src={el.media_url} alt="" />
-                </a>
-              </li>
-            );
-          })}
-      </ul>
+      <Fade bottom>
+        <ul>
+          {image
+            .filter((img: any, idx: number) => {
+              return img && idx < 6;
+            })
+            .map((el: any) => {
+              return (
+                <li>
+                  <a href={el.permalink}>
+                    {" "}
+                    <img src={el.media_url} alt="" />
+                  </a>
+                </li>
+              );
+            })}
+        </ul>
+      </Fade>
     </InstagramWrap>
   );
 };

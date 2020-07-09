@@ -65,8 +65,8 @@ const TitleTrTag = styled.tr``;
 const TrTag = styled.tr`
   display: flex;
   justify-content: space-around;
-
   margin-left: 7em;
+  padding: 1em 0;
 `;
 
 const TdTag = styled.td`
