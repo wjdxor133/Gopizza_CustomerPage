@@ -38,8 +38,8 @@ const Map = () => {
   // 매장 API
   const storeInfoAPI = async () => {
     // 목데이터 /data/locationData.json
-    // const result = await (await axios.get("/data/locationData.json")).data.data;
-    const result = (await axios.get(StoreAPI)).data.data;
+    const result = await (await axios.get("/data/locationData.json")).data.data;
+    // const result = (await axios.get(StoreAPI)).data.data;
     KakaoMap(result);
   };
 
@@ -178,7 +178,7 @@ const Map = () => {
           position: moveLatLon,
         });
 
-        const iwContent = '<div style="padding:5px;">여기에 계신가요?</div>',
+        const iwContent = '<div style="padding:0.5em">여기에 계신가요?</div>',
           iwRemoveable = true;
 
         const infowindow = new window.kakao.maps.InfoWindow({
@@ -235,6 +235,7 @@ const Map = () => {
       ) : null}
       <KakaoMapBox>
         <StoreMap id="Map-Mymap"></StoreMap>
+        <MapList storeList={storeList} />
       </KakaoMapBox>
       <BtnBox>
         <StoreSearchBtn onClick={currentMark}>내 현재 위치</StoreSearchBtn>
@@ -242,7 +243,6 @@ const Map = () => {
           가까운 매장으로 이동!
         </StoreSearchBtn>
       </BtnBox>
-      <MapList storeList={storeList} />
     </MapComponent>
   );
 };
@@ -260,13 +260,14 @@ const KakaoMapBox = styled.div`
 `;
 
 const StoreMap = styled.div`
-  width: 1000px;
+  width: 50%;
   height: 500px;
 `;
 
 const BtnBox = styled.div`
   display: flex;
   justify-content: center;
+  margin: 1em 0;
 `;
 const StoreSearchBtn = styled.button`
   background-color: #f86d0d;

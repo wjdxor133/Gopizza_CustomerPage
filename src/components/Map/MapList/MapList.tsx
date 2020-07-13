@@ -40,12 +40,11 @@ const MapList = ({ storeList }: MapListProps) => {
 export default MapList;
 
 const MapListComponent = styled.div`
-  width: 100%;
+  width: 40%;
 `;
 
 const MapListTable = styled.table`
-  width: 80%;
-  margin: 0 auto;
+  width: 100%;
 `;
 
 const Thead = styled.thead``;
@@ -55,7 +54,10 @@ const Tbody = styled.tbody``;
 const ScrollBox = styled.div`
   width: 100%;
   overflow-y: scroll;
-  height: 300px;
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 `;
 
 const ThTag = styled.th``;
@@ -64,27 +66,10 @@ const TitleTrTag = styled.tr``;
 
 const TrTag = styled.tr`
   display: flex;
-  justify-content: space-around;
-  margin-left: 7em;
+  margin-left: 2em;
   padding: 1em 0;
 `;
 
 const TdTag = styled.td`
   width: 25%;
-
-  &:nth-child(1) {
-    margin-left: 0em;
-  }
-
-  &:nth-child(2) {
-    margin-left: -2em;
-  }
-
-  &:nth-child(3) {
-    margin-left: -2.5em;
-  }
-
-  &:nth-child(4) {
-    margin-left: 2em;
-  }
 `;
