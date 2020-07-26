@@ -5,60 +5,67 @@ import { TiArrowSortedUp } from "react-icons/ti";
 const Footer = () => {
   return (
     <FooterComponent>
-      <FooterLeft>
-        <FooterLeftTop>
-          <FooterText>
-            <FooterTextBold>가맹문의 | </FooterTextBold>070-4469-6747
-          </FooterText>
-          <FooterText>
-            <FooterTextBold>대표전화 | </FooterTextBold>1800-8972
-          </FooterText>
-          <FooterText>
-            <FooterTextBold>이메일 | </FooterTextBold>gofficial@gopizza.kr
-          </FooterText>
-        </FooterLeftTop>
-        <FooterLeftbottom>
-          <FooterText>주식회사 고피자 | 대표이사 임재원 |</FooterText>
-          <FooterText>
-            서울특별시 마포구 독막로19길 26 씨코빌딩 1층, 2층
-          </FooterText>
-          <FooterText>사업자 등록번호 | 571-87-00783</FooterText>
-          <FooterTextSmall>
-            @2020 GOPIZZA Co. All rights reserved.
-          </FooterTextSmall>
-        </FooterLeftbottom>
-      </FooterLeft>
-      <FooterRight>
-        <FooterRightTop>
-          <FooterRightTopBox>
-            <TiArrowSortedUp size="18" color="#f86d0d" />
-            <FooterTopText>TOP</FooterTopText>
-          </FooterRightTopBox>
-        </FooterRightTop>
-        <FooterRightBottom>
-          <img
-            src="https://www.gopizza.kr/wp-content/uploads/2020/06/good_franchise.png"
-            alt=""
-          ></img>
-          <img
-            src="https://www.gopizza.kr/wp-content/uploads/2020/06/brand_1_enblem_01.png"
-            alt=""
-          ></img>
-          <img
-            src="https://www.gopizza.kr/wp-content/uploads/2020/06/HACCP-icon.png"
-            alt=""
-          ></img>
-          <FooterLogoText>GOPIZZA</FooterLogoText>
-        </FooterRightBottom>
-      </FooterRight>
+      <FooterBox>
+        <FooterLeft>
+          <FooterLeftTop>
+            <FooterText>
+              <FooterTextBold>가맹문의 | </FooterTextBold>070-4469-6747
+            </FooterText>
+            <FooterText>
+              <FooterTextBold>대표전화 | </FooterTextBold>1800-8972
+            </FooterText>
+            <FooterText>
+              <FooterTextBold>이메일 | </FooterTextBold>gofficial@gopizza.kr
+            </FooterText>
+          </FooterLeftTop>
+          <FooterLeftbottom>
+            <FooterText>주식회사 고피자 | 대표이사 임재원 |</FooterText>
+            <FooterText>
+              서울특별시 마포구 독막로19길 26 씨코빌딩 1층, 2층
+            </FooterText>
+            <FooterText>사업자 등록번호 | 571-87-00783</FooterText>
+            <FooterTextSmall>
+              @2020 GOPIZZA Co. All rights reserved.
+            </FooterTextSmall>
+          </FooterLeftbottom>
+        </FooterLeft>
+        <FooterRight>
+          <FooterRightTop>
+            <FooterRightTopBox>
+              <TiArrowSortedUp size="18" color="#f86d0d" />
+              <FooterTopText>TOP</FooterTopText>
+            </FooterRightTopBox>
+          </FooterRightTop>
+          <FooterRightBottom>
+            <img
+              src="https://www.gopizza.kr/wp-content/uploads/2020/06/good_franchise.png"
+              alt=""
+            ></img>
+            <img
+              src="https://www.gopizza.kr/wp-content/uploads/2020/06/brand_1_enblem_01.png"
+              alt=""
+            ></img>
+            <img
+              src="https://www.gopizza.kr/wp-content/uploads/2020/06/HACCP-icon.png"
+              alt=""
+            ></img>
+            <FooterLogoText>GOPIZZA</FooterLogoText>
+          </FooterRightBottom>
+        </FooterRight>
+      </FooterBox>
     </FooterComponent>
   );
 };
 
 const FooterComponent = styled.div`
   width: 100%;
-  padding: 3em 20em;
   background-color: #f86d0d;
+  padding: 2em 0;
+`;
+
+const FooterBox = styled.div`
+  width: 70%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
 `;

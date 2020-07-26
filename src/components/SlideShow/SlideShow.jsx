@@ -25,10 +25,6 @@ const SlideShow = () => {
               src="https://www.gopizza.kr/wp-content/uploads/2020/05/pizza-asian-seafood-1-400x300.jpg"
               alt=""
             ></img>
-            {/* <div>
-              <p style={{ height: "70%", backgroundColor: "green" }}>hello</p>
-              <p style={{ height: "30%", backgroundColor: "red" }}>hi</p>
-            </div> */}
           </div>
         </div>
         <div>
@@ -113,18 +109,5 @@ const SlideContainer = styled.div`
     display: none;
   }
 `;
-
-// const SlideShowBoxBottom = styled.div`
-//   height: 30%;
-//   background-color: #fff;
-// `;
-
-// const StepText = styled.p`
-//   font-size: 1rem;
-//   font-weight: bold;
-//   color: #d3c5b8;
-//   display: flex;
-//   align-items: center;
-// `;
 
 export default SlideShow;

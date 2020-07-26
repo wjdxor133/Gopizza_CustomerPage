@@ -1,7 +1,8 @@
 /* global kakao*/
 import React, { useState, useEffect } from "react";
+import Footer from "../Footer/Footer";
 import axios from "axios";
-import { StoreAPI } from "../../config";
+import { StoreAPI, apiKey } from "../../config";
 import MapList from "./MapList/MapList";
 import ModalPortal from "../Modal/ModalPortal";
 import NotNearStore from "../Modal/NotNearStore/NotNearStore";
@@ -55,8 +56,7 @@ const Map = () => {
   const KakaoMap = (result) => {
     const script = document.createElement("script");
     script.async = true;
-    script.src =
-      "https://dapi.kakao.com/v2/maps/sdk.js?appkey=aa9ca5d115739e988fab0a879015627a&autoload=false";
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false`;
     document.body.appendChild(script);
     script.onload = () => {
       window.kakao.maps.load(() => {
@@ -233,16 +233,29 @@ const Map = () => {
           />
         </ModalPortal>
       ) : null}
-      <KakaoMapBox>
-        <StoreMap id="Map-Mymap"></StoreMap>
-        <MapList storeList={storeList} />
-      </KakaoMapBox>
+      <MapTitle>GOPIZZA</MapTitle>
+      <ImgBox>
+        <Img
+          src="https://www.gopizza.kr/wp-content/uploads/2019/03/홈페이지-매장1.jpg"
+          alt=""
+        ></Img>
+        <ImgText>
+          우리동네
+          <br /> 고피자
+          <br /> <span className="imgText">가까운 매장을 찾아보세요.</span>
+        </ImgText>
+      </ImgBox>
       <BtnBox>
         <StoreSearchBtn onClick={currentMark}>내 현재 위치</StoreSearchBtn>
         <StoreSearchBtn onClick={NearestStoreMarks}>
           가까운 매장으로 이동!
         </StoreSearchBtn>
       </BtnBox>
+      <KakaoMapBox>
+        <StoreMap id="Map-Mymap"></StoreMap>
+        <MapList storeList={storeList} />
+      </KakaoMapBox>
+      <Footer />
     </MapComponent>
   );
 };
@@ -251,12 +264,49 @@ export default Map;
 
 const MapComponent = styled.div`
   width: 100%;
+  height: 100vh;
+`;
+
+const MapTitle = styled.div`
+  width: 100%;
+  background-color: #f86d0d;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1.2em 7em;
+`;
+
+const ImgBox = styled.div`
+  width: 100%;
+  height: 40%;
+  position: relative;
+`;
+
+const Img = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
+const ImgText = styled.p`
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+
+  .imgText {
+    font-size: 2rem;
+  }
 `;
 
 const KakaoMapBox = styled.div`
+  width: 80%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1em 0;
 `;
 
 const StoreMap = styled.div`

@@ -1,26 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 import InstaConnect from "./InstaConnect/InstaConnect";
+import Fade from "react-reveal/Fade";
 
 const ApplicationInsta = () => {
   return (
     <ContentWrap>
       <Content>
-        <TextWrap>
-          <h1>매주 올라오는 #고피자</h1>
-          <TextBoxWrap>
-            <TextBoxOrange>고피자 인스타그램</TextBoxOrange>
-            <TextBoxWhite>팔로우 GO!</TextBoxWhite>
-          </TextBoxWrap>
-        </TextWrap>
+        <Fade bottom>
+          <TextWrap>
+            <h1>매주 올라오는 #고피자</h1>
+            <TextBoxWrap>
+              <TextBoxOrange>고피자 인스타그램</TextBoxOrange>
+              <TextBoxWhite>팔로우 GO!</TextBoxWhite>
+            </TextBoxWrap>
+          </TextWrap>
+        </Fade>
         <FollowWrpa>
-          <Gopizza>
-            <i className="fab fa-instagram"></i>
-            #고피자
-          </Gopizza>
-          <Follow>
-            팔로우하기 <i className="fas fa-chevron-right"></i>
-          </Follow>
+          <Fade bottom>
+            <a href="https://www.instagram.com/gopizza.kr/?hl=ko">
+              <Gopizza>
+                <i className="fab fa-instagram"></i>
+                #고피자
+              </Gopizza>
+              <Follow>
+                팔로우하기 <i className="fas fa-chevron-right"></i>
+              </Follow>
+            </a>
+          </Fade>
         </FollowWrpa>
         <InstaConnect />
         <GradientOverlay />
@@ -33,9 +40,7 @@ export default ApplicationInsta;
 
 const ContentWrap = styled.section`
   width: 100%;
-  height: 120vh;
   background-color: #fff6e1;
-  position: relative;
 `;
 
 const Content = styled.div`
@@ -43,15 +48,11 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
 `;
 
 const TextWrap = styled.div`
   text-align: center;
-  margin-bottom: 55px;
+  margin: 2em 0;
   h1 {
     font-size: 2rem;
     font-weight: 800;
@@ -92,6 +93,9 @@ const FollowWrpa = styled.span`
   padding: 0.6rem 1rem;
   border-radius: 30px;
   background-color: #492c19;
+  a {
+    display: flex;
+  }
 `;
 const Gopizza = styled.span`
   color: #ff6602;
@@ -116,8 +120,5 @@ const Follow = styled.span`
 
 const GradientOverlay = styled.div`
   width: 100%;
-  height: 62%;
   background: linear-gradient(#f9d8b3, #fff6e1);
-  position: absolute;
-  bottom: 0;
 `;

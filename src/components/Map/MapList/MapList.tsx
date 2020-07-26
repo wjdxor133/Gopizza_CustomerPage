@@ -13,7 +13,6 @@ const MapList = ({ storeList }: MapListProps) => {
             <ThTag>매장명/주소</ThTag>
             <ThTag>전화번호</ThTag>
             <ThTag>영업시간</ThTag>
-            <ThTag>이용가능 서비스</ThTag>
           </TitleTrTag>
         </Thead>
       </MapListTable>
@@ -26,7 +25,6 @@ const MapList = ({ storeList }: MapListProps) => {
                   <TdTag>{store.name}</TdTag>
                   <TdTag>{store.tel}</TdTag>
                   <TdTag>{store.hours}</TdTag>
-                  <TdTag>아직 미정</TdTag>
                 </TrTag>
               );
             })}
@@ -47,7 +45,10 @@ const MapListTable = styled.table`
   width: 100%;
 `;
 
-const Thead = styled.thead``;
+const Thead = styled.thead`
+  border: 1px solid #ddd;
+  border-bottom-style: none;
+`;
 
 const Tbody = styled.tbody``;
 
@@ -56,18 +57,28 @@ const ScrollBox = styled.div`
   overflow-y: scroll;
   height: 400px;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  border: 1px solid #ddd;
 `;
 
-const ThTag = styled.th``;
+const ThTag = styled.th`
+  width: 33.3%;
+  text-align: center;
+  padding: 2.5em 0;
+  :nth-child(3) {
+    padding-right: 2em;
+  }
+`;
 
 const TitleTrTag = styled.tr``;
 
 const TrTag = styled.tr`
   display: flex;
-  margin-left: 2em;
-  padding: 1em 0;
+  font-size: 0.9rem;
+  justify-content: space-around;
+  padding: 1.5em 0 1.5em 1.2em;
+  border: 1px solid #ddd;
+  border-top-style: none;
 `;
 
 const TdTag = styled.td`

@@ -1,6 +1,5 @@
 import React from "react";
 import Fade from "react-reveal/Fade";
-// import Fade from "react-reveal/Fade";
 import styled from "styled-components";
 import HeaderImg from "../../img/HeaderImg.png";
 
@@ -14,7 +13,7 @@ const Header = () => {
         </MainText>
         <Fade bottom>
           <ImgContainer>
-            <img src={HeaderImg} alt="" />
+            <img src={HeaderImg} alt="HeaderImg.png" />
           </ImgContainer>
         </Fade>
         <Fade bottom>
@@ -33,8 +32,7 @@ export default Header;
 
 const Headers = styled.section`
   width: 100%;
-  height: 80vh;
-  position: relative;
+  margin: 2em 0;
 `;
 
 const Container = styled.div`
@@ -43,9 +41,6 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
 `;
 
 const MainText = styled.div`
@@ -53,11 +48,10 @@ const MainText = styled.div`
   margin: 0 auto;
   text-align: center;
   h1 {
-    width: 10%;
+    display: inline-block;
     margin: 0 auto;
     font-size: 1.5rem;
     font-weight: 700;
-    font-family: "Roboto", sans-serif;
     color: #f86d0d;
     border-top: 3px solid #f86d0d;
     border-bottom: 3px solid #f86d0d;
@@ -66,14 +60,12 @@ const MainText = styled.div`
   h2 {
     font-size: 3.88rem;
     color: #f86d0d;
-    font-family: "Oswald", sans-serif;
     font-weight: 800;
   }
 `;
 
 const ImgContainer = styled.div`
   width: 100%;
-  position: relative;
   padding: 50px 0 50px 0;
   img {
     width: 40%;

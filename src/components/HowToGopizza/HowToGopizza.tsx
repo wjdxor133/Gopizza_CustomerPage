@@ -6,32 +6,36 @@ import styled from "styled-components";
 const HowToGopizza = () => {
   return (
     <>
-      <Fade bottom>
-        <Promotion>
-          <PromotionTop>
+      <Promotion>
+        <PromotionTop>
+          <Fade bottom>
             <TopTextOne>피자 한 판 = 0원?</TopTextOne>
             <TopTextTwo>고피자의 놀라운 0원 이벤트</TopTextTwo>
             <TopTextThree>COMING SOON</TopTextThree>
-          </PromotionTop>
-          <PromotionContainer>
-            <PromotionArticles>
+          </Fade>
+        </PromotionTop>
+        <PromotionContainer>
+          <PromotionArticles>
+            <Fade bottom>
               <ArticlesTitle>
                 피자도 버거처럼
                 <br /> <OrangeColor>1인 세트</OrangeColor>로 즐기자!
               </ArticlesTitle>
+            </Fade>
+            <Fade bottom>
               <ArticlesText>
                 다양한 화덕 피자 & 파스타에 사이드 메뉴를 취향 존중!
                 <br />
                 내가 원하는 대로 고퀄 1인 피자를 즐겨보세요!
               </ArticlesText>
-              <SlideShowTitle>
-                HOW TO ENJOY <OrangeColor>GOPIZZA</OrangeColor>
-              </SlideShowTitle>
-            </PromotionArticles>
-            <SlideShow />
-          </PromotionContainer>
-        </Promotion>
-      </Fade>
+            </Fade>
+            <SlideShowTitle>
+              HOW TO ENJOY <OrangeColor>GOPIZZA</OrangeColor>
+            </SlideShowTitle>
+          </PromotionArticles>
+          <SlideShow />
+        </PromotionContainer>
+      </Promotion>
     </>
   );
 };

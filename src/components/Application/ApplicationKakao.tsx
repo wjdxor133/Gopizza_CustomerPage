@@ -2,21 +2,21 @@ import React from "react";
 import KakaoPlusBtn from "./KakaoPlusBtn/KakaoPlusBtn";
 import styled from "styled-components";
 import kakaoPlus from "../../img/kakaoPlus.png";
-// import Fade from "react-reveal/Fade";
+import Fade from "react-reveal/Fade";
 
 const ApplicationKakao = () => {
   return (
     <ContentWrap>
       <Header>
-        <h1>고피자 톡채널 추가하GO</h1>
-        <h2>고피자 소식 받자!</h2>
+        <Fade bottom>
+          <h1>고피자 톡채널 추가하GO</h1>
+          <h2>고피자 소식 받자!</h2>
+        </Fade>
       </Header>
       <KakaoPlusImg>
         <img src={kakaoPlus} alt="" />
-      </KakaoPlusImg>
-      <BtnWrap>
         <KakaoPlusBtn />
-      </BtnWrap>
+      </KakaoPlusImg>
     </ContentWrap>
   );
 };
@@ -25,22 +25,17 @@ export default ApplicationKakao;
 
 const ContentWrap = styled.div`
   width: 100%;
-  height: 70vh;
-  position: relative;
 `;
 
 const Header = styled.div`
   width: 100%;
-  height: 20%;
+  padding: 2em 0;
   background-color: #f86d0d;
-  position: absolute;
   text-align: center;
-  top: 0;
-  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  z-index: 5;
+
   h1 {
     color: #fff;
     font-weight: 700;
@@ -58,18 +53,10 @@ const Header = styled.div`
 
 const KakaoPlusImg = styled.div`
   width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  position: relative;
   display: flex;
   justify-content: center;
   img {
-    width: 55%;
+    width: 50%;
   }
-`;
-
-const BtnWrap = styled.div`
-  position: relative;
-  left: 26.5%;
-  top: 65%;
 `;

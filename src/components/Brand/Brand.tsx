@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { VideoConfig } from "../../config";
 
-// import Fade from "react-reveal/Fade";
+import Fade from "react-reveal/Fade";
 
 const selVideo = {
   0: {
@@ -19,8 +19,6 @@ const selVideo = {
   },
 };
 
-// type BrandProps = { onClick: (VideoSelect: number) => void };
-
 const Brand = () => {
   const [view, setView] = useState<any>(0);
   const VideoSelect = (num: number) => {
@@ -33,12 +31,14 @@ const Brand = () => {
   return (
     <ContentWrap>
       <Container>
-        <h1>BRAND FILM</h1>
+        <Fade bottom>
+          <h1>BRAND FILM</h1>
+        </Fade>
         <ButtonWrap>
-          <Video01Btn onClick={VideoSelect(0)}>혼밥편</Video01Btn>
-          <Video02Btn onClick={VideoSelect(1)}>집관편</Video02Btn>
-          <Video03Btn onClick={VideoSelect(2)}>미드편</Video03Btn>
-          <Video04Btn onClick={VideoSelect(3)}>10분컷편</Video04Btn>
+          <VideoBtn onClick={VideoSelect(0)}>혼밥편</VideoBtn>
+          <VideoBtn onClick={VideoSelect(1)}>집관편</VideoBtn>
+          <VideoBtn onClick={VideoSelect(2)}>미드편</VideoBtn>
+          <VideoBtn onClick={VideoSelect(3)}>10분컷편</VideoBtn>
         </ButtonWrap>
         <Iframe
           width="560"
@@ -55,8 +55,8 @@ export default Brand;
 
 const ContentWrap = styled.div`
   width: 100%;
-  height: 60vh;
   background-color: #fff6e1;
+  padding: 2em 0;
   h1 {
     font-size: 1.5rem;
     font-family: "Roboto", sans-serif;
@@ -65,16 +65,12 @@ const ContentWrap = styled.div`
     padding-bottom: 2%;
   }
   video {
-    position: absolute;
     width: 50%;
-    top: 0;
-    left: 0;
   }
 `;
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,46 +82,7 @@ const ButtonWrap = styled.div`
   margin-bottom: 10px;
 `;
 
-const Video01Btn = styled.button`
-  width: 70px;
-  height: 25px;
-  background-color: #472c1a;
-  color: #fff;
-  border-radius: 3px;
-  font-family: "Roboto", sans-serif;
-  margin-left: 0.3em;
-  &:hover {
-    cursor: pointer;
-    background-color: #f86d0d;
-  }
-`;
-const Video02Btn = styled.button`
-  width: 70px;
-  height: 25px;
-  background-color: #472c1a;
-  color: #fff;
-  border-radius: 3px;
-  font-family: "Roboto", sans-serif;
-  margin-left: 0.3em;
-  &:hover {
-    cursor: pointer;
-    background-color: #f86d0d;
-  }
-`;
-const Video03Btn = styled.button`
-  width: 70px;
-  height: 25px;
-  background-color: #472c1a;
-  color: #fff;
-  border-radius: 3px;
-  font-family: "Roboto", sans-serif;
-  margin-left: 0.3em;
-  &:hover {
-    cursor: pointer;
-    background-color: #f86d0d;
-  }
-`;
-const Video04Btn = styled.button`
+const VideoBtn = styled.button`
   width: 70px;
   height: 25px;
   background-color: #472c1a;
