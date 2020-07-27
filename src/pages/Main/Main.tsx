@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header/MainHeader";
 import Brand from "../../components/Brand/Brand";
 import HowToGopizza from "../../components/HowToGopizza/HowToGopizza";
 import ApplicationKakao from "../../components/Application/ApplicationKakao";
@@ -24,7 +24,7 @@ const Main = ({ history }) => {
     <MainComponent>
       <Header />
       <Brand />
-      <HowToGopizza />
+      <HowToGopizza history={history} />
       <ApplicationKakao />
       <ApplicationInsta />
       <FindSection>
@@ -106,7 +106,6 @@ const FindStoreBtn = styled.div`
   padding: 0.4em;
   font-size: 0.8rem;
   font-weight: bold;
-
   &:hover {
     cursor: pointer;
   }
@@ -127,7 +126,6 @@ const FindDeliveryBox = styled.div`
 
 const FindDeliveryImges = styled.div`
   display: flex;
-
   img {
     width: 40px;
     height: 40px;

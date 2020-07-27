@@ -1,5 +1,6 @@
 /* global kakao*/
 import React, { useState, useEffect } from "react";
+import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 import { StoreAPI, apiKey } from "../../config";
@@ -21,7 +22,7 @@ interface MapStateType {
   order: boolean;
 }
 
-const Map = () => {
+const Map = ({ history }) => {
   const imageSrc: string =
     "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png";
   const [gopizzaMap, setGopizzaMap] = useState<any>(); // 지도 생성 후 담은 변수
@@ -233,7 +234,7 @@ const Map = () => {
           />
         </ModalPortal>
       ) : null}
-      <MapTitle>GOPIZZA</MapTitle>
+      <Header history={history} />
       <ImgBox>
         <Img
           src="https://www.gopizza.kr/wp-content/uploads/2019/03/홈페이지-매장1.jpg"
@@ -265,15 +266,6 @@ export default Map;
 const MapComponent = styled.div`
   width: 100%;
   height: 100vh;
-`;
-
-const MapTitle = styled.div`
-  width: 100%;
-  background-color: #f86d0d;
-  color: white;
-  font-size: 2rem;
-  font-weight: 700;
-  padding: 1.2em 7em;
 `;
 
 const ImgBox = styled.div`

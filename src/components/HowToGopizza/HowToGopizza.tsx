@@ -3,7 +3,10 @@ import Fade from "react-reveal/Fade";
 import SlideShow from "../SlideShow/SlideShow";
 import styled from "styled-components";
 
-const HowToGopizza = () => {
+const HowToGopizza = ({ history }) => {
+  const goToMenu = () => {
+    history.push("/menu");
+  };
   return (
     <>
       <Promotion>
@@ -34,6 +37,9 @@ const HowToGopizza = () => {
             </SlideShowTitle>
           </PromotionArticles>
           <SlideShow />
+          <PromotionArticles>
+            <GotoMenu onClick={goToMenu}>메뉴 확인하기</GotoMenu>
+          </PromotionArticles>
         </PromotionContainer>
       </Promotion>
     </>
@@ -121,4 +127,19 @@ const SlideShowTitle = styled.p`
   background-color: #472c17;
   border-radius: 30px;
   padding: 0.3em 3em;
+  margin-bottom: 1em;
+`;
+
+const GotoMenu = styled.p`
+  display: inline-block;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #472c17;
+  border-radius: 10px;
+  padding: 1em 3em;
+  margin-top: -2em;
+  &:hover {
+    cursor: pointer;
+  }
 `;
