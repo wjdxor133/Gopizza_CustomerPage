@@ -1,7 +1,7 @@
 import React from "react";
 import Fade from "react-reveal/Fade";
 import styled from "styled-components";
-import HeaderImg from "../../img/HeaderImg.png";
+import HeaderImg from "../../assets/img/HeaderImg.png";
 
 const Header = () => {
   return (

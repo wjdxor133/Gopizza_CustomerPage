@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../../components/Header/Header";
+import MenuList from "../../components/MenuList/MenuList";
 
 const Menu = ({ history }) => {
+  const [menuNum, setMenuNum] = useState<number>(0);
+  const munuBar: string[] = [
+    "피자",
+    "파스타",
+    "사이드 & 디저트",
+    "음료",
+    "패키지",
+    "토핑 & 소스",
+  ];
+
+  const changeMenuList = (num) => {
+    setMenuNum(num);
+  };
   return (
     <MenuComponent>
       <Header history={history} />
@@ -22,15 +36,21 @@ const Menu = ({ history }) => {
       </ImgBox>
       <NavBar>
         <NavTextBox>
-          <NavText>모든메뉴</NavText>
-          <NavText>피자</NavText>
-          <NavText>파스타</NavText>
-          <NavText>사이드 & 디저트</NavText>
-          <NavText>음료</NavText>
-          <NavText>패키지</NavText>
-          <NavText>토핑 & 소스</NavText>
+          {munuBar.map((menu: string, idx: number) => {
+            return (
+              <NavText
+                key={idx}
+                onClick={() => {
+                  changeMenuList(idx);
+                }}
+              >
+                {menu}
+              </NavText>
+            );
+          })}
         </NavTextBox>
       </NavBar>
+      <MenuList menuNum={menuNum} />
     </MenuComponent>
   );
 };
@@ -69,10 +89,12 @@ const ImgText = styled.p`
 
 const NavBar = styled.div`
   width: 100%;
+  background-color: #f6f6f6;
 `;
 
 const NavTextBox = styled.div`
-  margin: 2em auto;
+  margin: 0 auto;
+  padding: 2em 0;
   display: flex;
   justify-content: center;
 `;

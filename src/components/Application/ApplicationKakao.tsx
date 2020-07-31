@@ -1,7 +1,7 @@
 import React from "react";
 import KakaoPlusBtn from "./KakaoPlusBtn/KakaoPlusBtn";
 import styled from "styled-components";
-import kakaoPlus from "../../img/kakaoPlus.png";
+import kakaoPlus from "../../assets/img/kakaoPlus.png";
 import Fade from "react-reveal/Fade";
 
 const ApplicationKakao = () => {

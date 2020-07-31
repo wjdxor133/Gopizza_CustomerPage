@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import axios from "axios";
-import { StoreAPI, apiKey } from "../../config";
+import { StoreAPI, apiKey } from "../../core/api/api";
 import MapList from "./MapList/MapList";
 import ModalPortal from "../Modal/ModalPortal";
 import NotNearStore from "../Modal/NotNearStore/NotNearStore";

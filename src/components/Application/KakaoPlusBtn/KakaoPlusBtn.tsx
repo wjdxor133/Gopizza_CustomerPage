@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { apiKey } from "../../../config";
+import { apiKey } from "../../../core/api/api";
 import styled from "styled-components";
 
 declare global {

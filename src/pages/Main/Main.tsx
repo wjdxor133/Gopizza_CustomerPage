@@ -6,11 +6,11 @@ import ApplicationKakao from "../../components/Application/ApplicationKakao";
 import ApplicationInsta from "../../components/Application/ApplicationInsta";
 import Footer from "../../components/Footer/Footer";
 import styled from "styled-components";
-import naverBrandLocation from "../../img/naver_brand_location.jpg";
+import naverBrandLocation from "../../assets/img/naver_brand_location.jpg";
 import { BsSearch } from "react-icons/bs";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import woowa from "../../img/woowa.png";
-import yogiyo from "../../img/yogiyo.png";
+import woowa from "../../assets/img/woowa.png";
+import yogiyo from "../../assets/img/yogiyo.png";
 
 type imgProps = {
   img: string;

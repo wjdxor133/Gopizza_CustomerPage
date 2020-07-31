@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { InstaAPI } from "../../../config";
+import { InstaAPI } from "../../../core/api/api";
 import Fade from "react-reveal/Fade";
 import styled from "styled-components";
 
