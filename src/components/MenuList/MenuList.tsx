@@ -37,6 +37,7 @@ const MenuList = ({ menuNum }: MenuLisptProps) => {
                 <p>{menu.en_name}</p>
                 <p>{menu.price}원</p>
                 <p>#{menu.tag_text}</p>
+                <button>장바구니 추가</button>
               </MenuItem>
             );
           })}
@@ -80,7 +81,15 @@ const MenuItem = styled.li`
       font-weight: bold;
     }
     :nth-child(5) {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
+  }
+  button {
+    background-color: #472c17;
+    color: white;
+    margin-top: 1em;
+    padding: 1em;
+    font-weight: bold;
+    border-radius: 3px;
   }
 `;

@@ -49,10 +49,10 @@ export default Header;
 
 const HeaderComponent = styled.div`
   width: 100%;
+  background-color: #f86d0d;
 `;
 
 const HeaderTitleBox = styled.div`
-  background-color: #f86d0d;
   color: white;
   display: flex;
 `;
