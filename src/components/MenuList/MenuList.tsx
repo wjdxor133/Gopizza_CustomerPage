@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import Footer from "../Footer/Footer";
 
 interface MenuListType {
   name: string;
@@ -42,6 +43,7 @@ const MenuList = ({ menuNum }: MenuLisptProps) => {
             );
           })}
       </MenuListBox>
+      <Footer />
     </MenuListComponent>
   );
 };

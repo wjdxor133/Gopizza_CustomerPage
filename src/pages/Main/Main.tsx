@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/Header/MainHeader";
+import MainHeader from "../../components/Header/MainHeader";
 import Brand from "../../components/Brand/Brand";
 import HowToGopizza from "../../components/HowToGopizza/HowToGopizza";
 import ApplicationKakao from "../../components/Application/ApplicationKakao";
@@ -22,7 +22,7 @@ const Main = ({ history }) => {
   };
   return (
     <MainComponent>
-      <Header />
+      <MainHeader />
       <Brand />
       <HowToGopizza history={history} />
       <ApplicationKakao />

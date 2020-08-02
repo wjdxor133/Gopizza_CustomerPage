@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import CartIcon from "../../containers/Cart/CartIcon/CartIcon";
 
 const Header = ({ history }) => {
-  const goToPage = (num) => {
+  const goToPage = (num: number) => {
     switch (num) {
       case 1:
         return history.push("/");
@@ -29,16 +30,19 @@ const Header = ({ history }) => {
               goToPage(2);
             }}
           >
-            메뉴 소개
+            메뉴소개
           </NavText>
           <NavText
             onClick={() => {
               goToPage(3);
             }}
           >
-            매장 찾기
+            매장찾기
           </NavText>
-          <NavText>장바구니</NavText>
+          <NavText>
+            장바구니
+            <CartIcon />
+          </NavText>
         </NavTextBox>
       </HeaderTitleBox>
     </HeaderComponent>
@@ -78,6 +82,11 @@ const NavText = styled.p`
   font-size: 1.4rem;
   font-weight: 700;
   margin-right: 3em;
+
+  :nth-child(3) {
+    position: relative;
+    margin-right: 0.3em;
+  }
 
   :hover {
     cursor: pointer;
