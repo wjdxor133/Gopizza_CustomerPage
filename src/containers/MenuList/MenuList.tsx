@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import Footer from "../Footer/Footer";
+
+import { connect } from "react-redux";
+import { addItem } from "../../redux/cart/cartActions";
 
 interface MenuListType {
+  id: number;
   name: string;
   en_name: string;
   tag_text: string;
@@ -13,9 +16,10 @@ interface MenuListType {
 
 type MenuLisptProps = {
   menuNum: number;
+  addItem: (item: MenuListType) => void;
 };
 
-const MenuList = ({ menuNum }: MenuLisptProps) => {
+const MenuList = ({ menuNum, addItem }: MenuLisptProps) => {
   const [menuData, setMenuData] = useState<Array<MenuListType[]>>([]);
 
   useEffect(() => {
@@ -30,25 +34,28 @@ const MenuList = ({ menuNum }: MenuLisptProps) => {
     <MenuListComponent>
       <MenuListBox>
         {menuData.length > 0 &&
-          menuData[menuNum].map((menu, idx: number) => {
+          menuData[menuNum].map((menu) => {
             return (
-              <MenuItem key={idx}>
+              <MenuItem key={menu.id}>
                 <img src={`${menu.img_url}`} alt=" "></img>
                 <p>{menu.name}</p>
                 <p>{menu.en_name}</p>
                 <p>{menu.price}원</p>
                 <p>#{menu.tag_text}</p>
-                <button>장바구니 추가</button>
+                <button onClick={() => addItem(menu)}>장바구니 추가</button>
               </MenuItem>
             );
           })}
       </MenuListBox>
-      <Footer />
     </MenuListComponent>
   );
 };
 
-export default MenuList;
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (item) => dispatch(addItem(item)),
+});
+
+export default connect(null, mapDispatchToProps)(MenuList);
 
 const MenuListComponent = styled.div`
   width: 100%;
@@ -93,5 +100,9 @@ const MenuItem = styled.li`
     padding: 1em;
     font-weight: bold;
     border-radius: 3px;
+
+    :hover {
+      cursor: pointer;
+    }
   }
 `;

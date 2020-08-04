@@ -39,10 +39,8 @@ const Header = ({ history }) => {
           >
             매장찾기
           </NavText>
-          <NavText>
-            장바구니
-            <CartIcon />
-          </NavText>
+          <NavText>장바구니</NavText>
+          <CartIcon />
         </NavTextBox>
       </HeaderTitleBox>
     </HeaderComponent>
@@ -79,14 +77,10 @@ const NavTextBox = styled.div`
 `;
 
 const NavText = styled.p`
+  width: 33.3%;
   font-size: 1.4rem;
   font-weight: 700;
   margin-right: 3em;
-
-  :nth-child(3) {
-    position: relative;
-    margin-right: 0.3em;
-  }
 
   :hover {
     cursor: pointer;

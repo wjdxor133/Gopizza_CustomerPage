@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "../../components/Header/Header";
-import MenuList from "../../components/MenuList/MenuList";
+import MenuList from "../../containers/MenuList/MenuList";
+import Footer from "../../components/Footer/Footer";
 
 const Menu = ({ history }) => {
   const [menuNum, setMenuNum] = useState<number>(0);
@@ -51,6 +52,7 @@ const Menu = ({ history }) => {
         </NavTextBox>
       </NavBar>
       <MenuList menuNum={menuNum} />
+      <Footer />
     </MenuComponent>
   );
 };
@@ -64,7 +66,7 @@ const MenuComponent = styled.div`
 
 const ImgBox = styled.div`
   width: 100%;
-  height: 40%;
+  height: 300px;
   position: relative;
 `;
 

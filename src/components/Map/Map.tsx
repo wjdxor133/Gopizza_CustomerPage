@@ -38,15 +38,16 @@ const Map = ({ history }) => {
   const { currentLat, currentLon, storeMarkers, order } = data;
 
   // 매장 API
-  const storeInfoAPI = async () => {
-    // 목데이터 /data/locationData.json
-    const result = await (await axios.get("/data/locationData.json")).data.data;
-    // const result = (await axios.get(StoreAPI)).data.data;
-    KakaoMap(result);
-  };
 
   // API 한번만 받아올 수 있게 설정
   useEffect(() => {
+    const storeInfoAPI = async () => {
+      // 목데이터 /data/locationData.json
+      const result = await (await axios.get("/data/locationData.json")).data
+        .data;
+      // const result = (await axios.get(StoreAPI)).data.data;
+      KakaoMap(result);
+    };
     storeInfoAPI();
   }, []);
 

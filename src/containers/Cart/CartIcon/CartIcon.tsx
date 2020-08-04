@@ -25,19 +25,20 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
 
 const CartIconComponent = styled.div`
-  :hover {
-    cursor: pointer;
-  }
+  width: 100%;
 `;
 
 const CartNumber = styled.p`
   position: absolute;
-  top: -32%;
-  right: -20%;
+  top: 32px;
+  right: 21%;
   font-size: 0.8rem;
   font-weight: bold;
   color: white;
   background-color: #472c17;
   padding: 0.3em 0.5em;
   border-radius: 45%;
+  :hover {
+    cursor: pointer;
+  }
 `;
