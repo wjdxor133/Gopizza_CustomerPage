@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import Login from "../../components/Modal/Login/Login";
 
 import { connect } from "react-redux";
 import { addItem } from "../../redux/cart/cartActions";
@@ -21,6 +22,7 @@ type MenuLisptProps = {
 
 const MenuList = ({ menuNum, addItem }: MenuLisptProps) => {
   const [menuData, setMenuData] = useState<Array<MenuListType[]>>([]);
+  const [loginModal, setLoginModal] = useState<boolean>(false);
 
   useEffect(() => {
     const apiData = async () =>
@@ -29,9 +31,14 @@ const MenuList = ({ menuNum, addItem }: MenuLisptProps) => {
       });
     apiData();
   }, [menuNum]);
-  console.log("menuData", menuData[menuNum]);
+
+  const showLoginModal = () => {
+    setLoginModal(true);
+  };
+
   return (
     <MenuListComponent>
+      {loginModal ? <Login /> : null}
       <MenuListBox>
         {menuData.length > 0 &&
           menuData[menuNum].map((menu) => {
@@ -42,7 +49,14 @@ const MenuList = ({ menuNum, addItem }: MenuLisptProps) => {
                 <p>{menu.en_name}</p>
                 <p>{menu.price}원</p>
                 <p>#{menu.tag_text}</p>
-                <button onClick={() => addItem(menu)}>장바구니 추가</button>
+                <button
+                  onClick={() => {
+                    showLoginModal();
+                    addItem(menu);
+                  }}
+                >
+                  장바구니 추가
+                </button>
               </MenuItem>
             );
           })}

@@ -6,7 +6,7 @@ import axios from "axios";
 import { StoreAPI, apiKey } from "../../core/api/api";
 import MapList from "./MapList/MapList";
 import ModalPortal from "../Modal/ModalPortal";
-import NotNearStore from "../Modal/NotNearStore/NotNearStore";
+import StoreModal from "../Modal/StoreModal/StoreModal";
 import styled from "styled-components";
 declare global {
   interface Window {
@@ -228,7 +228,7 @@ const Map = ({ history }) => {
     <MapComponent>
       {showModal ? (
         <ModalPortal elementId="modal">
-          <NotNearStore
+          <StoreModal
             setShowModal={setShowModal}
             showModal={showModal}
             order={order}

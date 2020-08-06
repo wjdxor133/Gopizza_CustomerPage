@@ -1,21 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import CartDropDown from "../CartDropDown/CartDropDown";
-import { toggleCartHidden } from "../../../redux/cart/cartActions";
 
-const CartIcon = ({ toggleCartHidden, hidden }) => {
+import CartDropDown from "../CartDropDown/CartDropDown";
+
+import { toggleCartHidden } from "../../../redux/cart/cartActions";
+import { selectCartItemsCount } from "../../../redux/cart/cartSelectors";
+
+const CartIcon = ({ toggleCartHidden, hidden, itemCount }) => {
   console.log("hidden", hidden);
   return (
     <CartIconComponent onClick={toggleCartHidden}>
-      <CartNumber>0</CartNumber>
+      <CartNumber>{itemCount}</CartNumber>
       {hidden ? null : <CartDropDown />}
     </CartIconComponent>
   );
 };
 
-const mapStateToProps = ({ cart: { hidden } }) => ({
-  hidden: hidden,
+const mapStateToProps = (state) => ({
+  hidden: state.cart.hidden,
+  itemCount: selectCartItemsCount(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

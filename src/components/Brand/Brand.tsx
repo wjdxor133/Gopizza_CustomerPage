@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { VideoConfig } from "../../core/api/api";
+import { VideoAPI } from "../../core/api/api";
 
 import Fade from "react-reveal/Fade";
 
 const selVideo = {
   0: {
-    src: `${VideoConfig}/m20p-MjGnVE`,
+    src: `${VideoAPI}/m20p-MjGnVE`,
   },
   1: {
-    src: `${VideoConfig}/B1Q2i1JGrOs`,
+    src: `${VideoAPI}/B1Q2i1JGrOs`,
   },
   2: {
-    src: `${VideoConfig}/zTDSrj7b8rw`,
+    src: `${VideoAPI}/zTDSrj7b8rw`,
   },
   3: {
-    src: `${VideoConfig}/47aSfcOqi48`,
+    src: `${VideoAPI}/47aSfcOqi48`,
   },
 };
 

@@ -18,6 +18,7 @@ const Menu = ({ history }) => {
   const changeMenuList = (num) => {
     setMenuNum(num);
   };
+
   return (
     <MenuComponent>
       <Header history={history} />
