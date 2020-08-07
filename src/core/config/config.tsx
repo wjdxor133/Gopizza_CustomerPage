@@ -1,5 +1,7 @@
+import { firebaseApiKey } from "../api/api";
+
 export const firebaseConfig = {
-  apiKey: "AIzaSyCgpK2cNUE7XpgeHT_kbb8tnpCrWuLvNzk",
+  apiKey: `${firebaseApiKey}`,
   authDomain: "gopizzadb.firebaseapp.com",
   databaseURL: "https://gopizzadb.firebaseio.com",
   projectId: "gopizzadb",

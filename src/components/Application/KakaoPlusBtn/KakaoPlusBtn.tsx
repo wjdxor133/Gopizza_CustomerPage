@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { apiKey } from "../../../core/api/api";
+import { kakaoApiKey } from "../../../core/api/api";
 import styled from "styled-components";
 
 declare global {
@@ -10,7 +10,7 @@ declare global {
 
 const KakaoPlus = () => {
   useEffect(() => {
-    window.Kakao.init(`${apiKey}`);
+    window.Kakao.init(`${kakaoApiKey}`);
     window.Kakao.PlusFriend.createAddFriendButton({
       container: "#plusfriend-addfriend-button",
       plusFriendId: "_dYsxjxb", // 플러스친구 홈 URL에 명시된 id로 설정합니다.

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import axios from "axios";
-import { StoreAPI, apiKey } from "../../core/api/api";
+import { StoreAPI, kakaoApiKey } from "../../core/api/api";
 import MapList from "./MapList/MapList";
 import ModalPortal from "../Modal/ModalPortal";
 import StoreModal from "../Modal/StoreModal/StoreModal";
@@ -58,7 +58,7 @@ const Map = ({ history }) => {
   const KakaoMap = (result) => {
     const script = document.createElement("script");
     script.async = true;
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false`;
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoApiKey}&autoload=false`;
     document.body.appendChild(script);
     script.onload = () => {
       window.kakao.maps.load(() => {
