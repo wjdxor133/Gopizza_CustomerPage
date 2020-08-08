@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+
+import { auth } from "../../core/utils/firebase/firebase";
+import { setCurrentUser } from "../../redux/user/userActions";
 import CartIcon from "../../containers/Cart/CartIcon/CartIcon";
 
 const Header = ({ history }) => {
+  const [curUserState, setCurUserState] = useState<firebase.User | null>(null);
   const goToPage = (num: number) => {
     switch (num) {
       case 1:
@@ -13,6 +18,15 @@ const Header = ({ history }) => {
         return history.push("/map");
     }
   };
+
+  useEffect(() => {
+    const unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+      setCurUserState(user);
+      console.log("user", user);
+    });
+
+    return () => unsubscribeFromAuth();
+  }, []);
 
   return (
     <HeaderComponent>
@@ -39,15 +53,29 @@ const Header = ({ history }) => {
           >
             매장찾기
           </NavText>
-          <NavText>장바구니</NavText>
-          <CartIcon />
+          <NavText>
+            장바구니
+            <CartIcon />
+          </NavText>
+          {/* <CartIcon /> */}
+          {curUserState ? (
+            <NavText onClick={() => auth.signOut()}>로그아웃</NavText>
+          ) : null}
         </NavTextBox>
       </HeaderTitleBox>
     </HeaderComponent>
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.cuurentUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 const HeaderComponent = styled.div`
   width: 100%;
@@ -77,10 +105,10 @@ const NavTextBox = styled.div`
 `;
 
 const NavText = styled.p`
-  width: 33.3%;
+  width: 25%;
   font-size: 1.4rem;
   font-weight: 700;
-  margin-right: 3em;
+  /* margin-right: 3em; */
 
   :hover {
     cursor: pointer;

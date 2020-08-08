@@ -1,18 +1,18 @@
 import React from "react";
+import styled from "styled-components";
 import MainHeader from "../../components/Header/MainHeader";
 import Brand from "../../components/Brand/Brand";
 import HowToGopizza from "../../components/HowToGopizza/HowToGopizza";
 import ApplicationKakao from "../../components/Application/ApplicationKakao";
 import ApplicationInsta from "../../components/Application/ApplicationInsta";
 import Footer from "../../components/Footer/Footer";
-import styled from "styled-components";
 import naverBrandLocation from "../../assets/img/naver_brand_location.jpg";
 import { BsSearch } from "react-icons/bs";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import woowa from "../../assets/img/woowa.png";
 import yogiyo from "../../assets/img/yogiyo.png";
 
-type imgProps = {
+type MainPropsType = {
   img: string;
 };
 
@@ -70,7 +70,7 @@ const FindSection = styled.div`
   align-items: center;
 `;
 
-const FindStore = styled.div<imgProps>`
+const FindStore = styled.div<MainPropsType>`
   width: 50%;
   background-image: url(${(props) => props.img && props.img});
   text-align: center;

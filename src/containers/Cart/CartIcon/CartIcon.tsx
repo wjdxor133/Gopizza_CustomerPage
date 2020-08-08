@@ -35,7 +35,7 @@ const CartIconComponent = styled.div`
 const CartNumber = styled.p`
   position: absolute;
   top: 32px;
-  right: 21%;
+  right: 17.1%;
   font-size: 0.8rem;
   font-weight: bold;
   color: white;

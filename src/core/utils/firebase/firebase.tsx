@@ -1,11 +1,11 @@
 import firebase from "firebase/app";
 // import { firebaseConfig } from "../../config/config";
-import { firebaseApiKey } from "../../api/api";
+// import { firebaseApiKey } from "../../api/api";
 import "firebase/firestore";
 import "firebase/auth";
 
 const config = {
-  apiKey: `${firebaseApiKey}`,
+  apiKey: "AIzaSyCgpK2cNUE7XpgeHT_kbb8tnpCrWuLvNzk",
   authDomain: "gopizzadb.firebaseapp.com",
   databaseURL: "https://gopizzadb.firebaseio.com",
   projectId: "gopizzadb",
