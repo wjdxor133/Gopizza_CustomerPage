@@ -1,28 +1,60 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+import {
+  auth,
+  createUserProfileDocument,
+} from "../../../core/utils/firebase/firebase";
 import { signInWithGoogle } from "../../../core/utils/firebase/firebase";
 
 type SignUpInputType = {
-  name: string;
-  id: string;
-  pw: string;
-  pwConfirm: string;
+  displayName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 };
 
 const SignUp = () => {
   const [inputValue, setInputValue] = useState<SignUpInputType>({
-    name: "",
-    id: "",
-    pw: "",
-    pwConfirm: "",
+    displayName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
-  const inputValueCheck = (e) => {
+  const inputValueCheck = (event) => {
+    const { name, value } = event.target;
     setInputValue({
       ...inputValue,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    console.log("inputValue", inputValue);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const { displayName, email, password, confirmPassword } = inputValue;
+    if (password !== confirmPassword) {
+      alert("비밀번호를 확인해주세요.");
+      return;
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await createUserProfileDocument(user, { displayName });
+      setInputValue({
+        displayName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {}, [inputValue]);
@@ -33,40 +65,42 @@ const SignUp = () => {
       <SignUpFormBox>
         <SignUpTextBox>
           <SignUpText>이름 </SignUpText>
-          <SignUpText>아이디 </SignUpText>
+          <SignUpText>이메일 </SignUpText>
           <SignUpText>비밀번호 </SignUpText>
           <SignUpText>비밀번호 확인 </SignUpText>
         </SignUpTextBox>
         <SignUpTextBox>
           <InputText
-            name="name"
-            value={inputValue.name}
+            name="displayName"
+            value={inputValue.displayName}
             placeholder="이름을 입력하시오."
             onChange={inputValueCheck}
           />
           <InputText
-            name="id"
-            value={inputValue.id}
+            name="email"
+            value={inputValue.email}
             placeholder="아이디를 입력하시오."
             onChange={inputValueCheck}
           />
           <InputText
-            name="pw"
-            value={inputValue.pw}
+            name="password"
+            value={inputValue.password}
             placeholder="비밀번호를 입력하시오."
             type="password"
             onChange={inputValueCheck}
           />
           <InputText
-            name="pwConfirm"
-            value={inputValue.pwConfirm}
+            name="confirmPassword"
+            value={inputValue.confirmPassword}
             placeholder="다시 입력하시오."
             type="password"
             onChange={inputValueCheck}
           />
         </SignUpTextBox>
       </SignUpFormBox>
-      <SignUpBtn>회원가입</SignUpBtn>
+      <SignUpBtn type="submit" onClick={handleSubmit}>
+        회원가입
+      </SignUpBtn>
       <SignUpBtn onClick={signInWithGoogle}> Sign in with Google </SignUpBtn>
     </SignUpComponent>
   );

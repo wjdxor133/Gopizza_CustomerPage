@@ -3,10 +3,11 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 
 import { auth } from "../../core/utils/firebase/firebase";
+import { createUserProfileDocument } from "../../core/utils/firebase/firebase";
 import { setCurrentUser } from "../../redux/user/userActions";
 import CartIcon from "../../containers/Cart/CartIcon/CartIcon";
 
-const Header = ({ history }) => {
+const Header = ({ history, setCurrentUser }) => {
   const [curUserState, setCurUserState] = useState<firebase.User | null>(null);
   const goToPage = (num: number) => {
     switch (num) {
@@ -20,9 +21,22 @@ const Header = ({ history }) => {
   };
 
   useEffect(() => {
-    const unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      setCurUserState(user);
-      console.log("user", user);
+    const unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      setCurUserState(userAuth);
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth, undefined);
+        console.log("userRef", userRef);
+        userRef?.onSnapshot((snapShot) => {
+          console.log("snapShot", snapShot);
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data(),
+          });
+        });
+      }
+
+      setCurrentUser(userAuth);
+      console.log("user", userAuth);
     });
 
     return () => unsubscribeFromAuth();
@@ -109,6 +123,10 @@ const NavText = styled.p`
   font-size: 1.4rem;
   font-weight: 700;
   /* margin-right: 3em; */
+
+  :nth-child(3) {
+    margin-top: 1em;
+  }
 
   :hover {
     cursor: pointer;

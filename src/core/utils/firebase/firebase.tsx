@@ -1,21 +1,34 @@
 import firebase from "firebase/app";
-// import { firebaseConfig } from "../../config/config";
-// import { firebaseApiKey } from "../../api/api";
+import { firebaseConfig } from "../../config/config";
 import "firebase/firestore";
 import "firebase/auth";
 
-const config = {
-  apiKey: "AIzaSyCgpK2cNUE7XpgeHT_kbb8tnpCrWuLvNzk",
-  authDomain: "gopizzadb.firebaseapp.com",
-  databaseURL: "https://gopizzadb.firebaseio.com",
-  projectId: "gopizzadb",
-  storageBucket: "gopizzadb.appspot.com",
-  messagingSenderId: "884674764535",
-  appId: "1:884674764535:web:b767e64c33542b292e3df2",
-  measurementId: "G-3SWBX5K25V",
-};
+firebase.initializeApp(firebaseConfig);
 
-firebase.initializeApp(config);
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  if (!userAuth) return;
+
+  const userRef = firestore.doc(`user/${userAuth.uid}`);
+
+  const snapShot = await userRef.get();
+
+  if (!snapShot.exists) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...additionalData,
+      });
+    } catch (error) {
+      console.log("error creating user", error.message);
+    }
+  }
+  return userRef;
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();

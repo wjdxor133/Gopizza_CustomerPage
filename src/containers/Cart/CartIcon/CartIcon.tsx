@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
 
-const CartIconComponent = styled.div`
+const CartIconComponent = styled.button`
   width: 100%;
 `;
 
