@@ -3,35 +3,51 @@ import styled from "styled-components";
 import SignUp from "../SignUp/SignUp";
 import ScrollLock from "../ScrollLock";
 
+import { auth } from "../../../core/utils/firebase/firebase";
+
 type LoginType = {
-  id: string;
-  pw: string;
+  email: string;
+  password: string;
 };
 
-const Login = () => {
+const Login = ({ showLoginModal }) => {
   const [inputValue, setInputValue] = useState<LoginType>({
-    id: "",
-    pw: "",
+    email: "",
+    password: "",
   });
   const [showSignUp, setShowSignUp] = useState<boolean>(false);
 
-  const inputValueCheck = (e) => {
+  const inputValueCheck = (evnet) => {
+    const { name, value } = evnet.target;
     setInputValue({
       ...inputValue,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
-  useEffect(() => {
-    console.log("id", inputValue.id);
-    console.log("pw", inputValue.pw);
-  }, [inputValue]);
+  useEffect(() => {}, [inputValue]);
 
   const goToSignUp = () => {
     setShowSignUp(true);
   };
 
+  const handleSubmit = async (evnet) => {
+    const { email, password } = inputValue;
+    evnet.preventDefault();
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      setInputValue({
+        email: "",
+        password: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   ScrollLock();
+  showLoginModal();
 
   return (
     <LoginComponent>
@@ -47,21 +63,21 @@ const Login = () => {
             </LoginTextBox>
             <LoginTextBox>
               <InputText
-                name="id"
-                value={inputValue.id}
-                placeholder="아이디 입력하시오."
+                name="email"
+                value={inputValue.email}
+                placeholder="이메일을 입력하시오."
                 onChange={inputValueCheck}
               />
               <InputText
-                name="pw"
-                value={inputValue.pw}
+                name="password"
+                value={inputValue.password}
                 placeholder="비밀번호를 입력하시오."
                 type="password"
                 onChange={inputValueCheck}
               />
             </LoginTextBox>
           </LoginFormBox>
-          <LoginBtn>로그인</LoginBtn>
+          <LoginBtn onClick={handleSubmit}>로그인</LoginBtn>
           <GotoSignUpText onClick={goToSignUp}>
             계정이 없으신가요?
           </GotoSignUpText>

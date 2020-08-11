@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
 import { auth } from "../../core/utils/firebase/firebase";
 import { createUserProfileDocument } from "../../core/utils/firebase/firebase";
 import { setCurrentUser } from "../../redux/user/userActions";
 import CartIcon from "../../containers/Cart/CartIcon/CartIcon";
+import { selectCurrentUser } from "../../redux/user/userSelectors";
 
 const Header = ({ history, setCurrentUser }) => {
   const [curUserState, setCurUserState] = useState<firebase.User | null>(null);
@@ -69,7 +71,7 @@ const Header = ({ history, setCurrentUser }) => {
           </NavText>
           <NavText>
             장바구니
-            <CartIcon />
+            <CartIcon history={history} />
           </NavText>
           {/* <CartIcon /> */}
           {curUserState ? (
@@ -81,8 +83,8 @@ const Header = ({ history, setCurrentUser }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.cuurentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({

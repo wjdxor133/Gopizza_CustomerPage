@@ -17,10 +17,11 @@ interface MenuListType {
 
 type MenuLisptProps = {
   menuNum: number;
+  currentUser: firebase.User | null;
   addItem: (item: MenuListType) => void;
 };
 
-const MenuList = ({ menuNum, addItem }: MenuLisptProps) => {
+const MenuList = ({ menuNum, currentUser, addItem }: MenuLisptProps) => {
   const [menuData, setMenuData] = useState<Array<MenuListType[]>>([]);
   const [loginModal, setLoginModal] = useState<boolean>(false);
 
@@ -33,12 +34,18 @@ const MenuList = ({ menuNum, addItem }: MenuLisptProps) => {
   }, [menuNum]);
 
   const showLoginModal = () => {
-    setLoginModal(true);
+    if (currentUser === null) {
+      setLoginModal(true);
+      console.log("loginModal", loginModal);
+    } else if (currentUser !== null) {
+      console.log("loginModal", loginModal);
+      setLoginModal(false);
+    }
   };
-
+  console.log("currentUser", currentUser);
   return (
     <MenuListComponent>
-      {loginModal ? <Login /> : null}
+      {loginModal ? <Login showLoginModal={showLoginModal} /> : null}
       <MenuListBox>
         {menuData.length > 0 &&
           menuData[menuNum].map((menu) => {
@@ -65,11 +72,15 @@ const MenuList = ({ menuNum, addItem }: MenuLisptProps) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),
 });
 
-export default connect(null, mapDispatchToProps)(MenuList);
+export default connect(mapStateToProps, mapDispatchToProps)(MenuList);
 
 const MenuListComponent = styled.div`
   width: 100%;

@@ -5,17 +5,26 @@ import { connect } from "react-redux";
 import CartItem from "../CartItem/CartItem";
 import { selectCartItems } from "../../../redux/cart/cartSelectors";
 
-const CartDropDown = ({ cartItems }) => {
+const CartDropDown = ({ cartItems, history }) => {
+  console.log("history", history);
   console.log("cartItems", cartItems);
+
+  const goToCheckoutPage = () => {
+    history.push("/checkout");
+  };
   return (
     <CartDropDownComponent>
       <CartDropDownTop>
-        {cartItems.map((cartItem) => {
-          return <CartItem key={cartItem.id} cartItem={cartItem} />;
-        })}
+        {cartItems.length > 0 ? (
+          cartItems.map((cartItem) => {
+            return <CartItem key={cartItem.id} cartItem={cartItem} />;
+          })
+        ) : (
+          <CartDropDownText>항목이 없습니다.</CartDropDownText>
+        )}
       </CartDropDownTop>
       <CartDropDownBottom>
-        <CartBtn>주문하기</CartBtn>
+        <CartBtn onClick={goToCheckoutPage}>주문하기</CartBtn>
       </CartDropDownBottom>
     </CartDropDownComponent>
   );
@@ -43,6 +52,12 @@ const CartDropDownComponent = styled.div`
 const CartDropDownTop = styled.div`
   height: 300px;
   overflow-y: auto;
+`;
+
+const CartDropDownText = styled.p`
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 4em;
 `;
 
 const CartDropDownBottom = styled.div`
