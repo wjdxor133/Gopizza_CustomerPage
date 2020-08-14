@@ -4,13 +4,12 @@ import { connect } from "react-redux";
 
 import CartItem from "../CartItem/CartItem";
 import { selectCartItems } from "../../../redux/cart/cartSelectors";
+import { toggleCartHidden } from "../../../redux/cart/cartActions";
 
-const CartDropDown = ({ cartItems, history }) => {
-  console.log("history", history);
-  console.log("cartItems", cartItems);
-
+const CartDropDown = ({ cartItems, history, dispatch }) => {
   const goToCheckoutPage = () => {
     history.push("/checkout");
+    dispatch(toggleCartHidden());
   };
   return (
     <CartDropDownComponent>

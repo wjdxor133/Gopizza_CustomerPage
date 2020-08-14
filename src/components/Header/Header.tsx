@@ -75,7 +75,14 @@ const Header = ({ history, setCurrentUser }) => {
           </NavText>
           {/* <CartIcon /> */}
           {curUserState ? (
-            <NavText onClick={() => auth.signOut()}>로그아웃</NavText>
+            <NavText
+              onClick={() => {
+                auth.signOut();
+                alert("로그아웃 성공!");
+              }}
+            >
+              로그아웃
+            </NavText>
           ) : null}
         </NavTextBox>
       </HeaderTitleBox>
