@@ -13,7 +13,7 @@ const CheckOutItem = ({ cartItem: { name, img_url, price, quantity } }) => {
         <CheckOutBoxItem>{quantity}</CheckOutBoxItem>
         <CheckOutBoxItem>{price}원</CheckOutBoxItem>
         <CheckOutBoxItem>
-          <MdDeleteForever size="24" />
+          <MdDeleteForever size="25" />
         </CheckOutBoxItem>
       </CheckOutTextBox>
     </CheckOutItemComponent>
