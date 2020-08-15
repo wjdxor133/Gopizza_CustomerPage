@@ -1,25 +1,13 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
-import { createBrowserHistory } from "history";
-import { routerMiddleware } from "connected-react-router";
-import createRootReducer from "./rootReducer";
+import { persistStore } from "redux-persist";
+
+import rootReducer from "./rootReducer";
 
 const middlewars = [logger];
 
-export const history = createBrowserHistory();
+export const store = createStore(rootReducer, applyMiddleware(...middlewars));
 
-export default function configureStore() {
-  const store = createStore(
-    createRootReducer(history),
-    compose(applyMiddleware(routerMiddleware(history), ...middlewars))
-  );
+export const persistor = persistStore(store);
 
-  return store;
-}
-
-// const store = createStore(
-//   createRootReducer(history),
-//   compose(applyMiddleware(...middlewars, routerMiddleware(history)))
-// );
-
-// export default store;
+export default { store, persistor };

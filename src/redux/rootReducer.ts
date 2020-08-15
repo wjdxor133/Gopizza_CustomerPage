@@ -1,14 +1,19 @@
 import { combineReducers } from "redux";
-import { connectRouter } from "connected-react-router";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 import userReducer from "./user/userReducer";
 import cartReducer from "./cart/cartReducer";
 
-const createRootReducer = (history) =>
-  combineReducers({
-    user: userReducer,
-    cart: cartReducer,
-    router: connectRouter(history),
-  });
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["cart"],
+};
 
-export default createRootReducer;
+const rootReducer = combineReducers({
+  user: userReducer,
+  cart: cartReducer,
+});
+
+export default persistReducer(persistConfig, rootReducer);
