@@ -30,14 +30,14 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
 
-const CartIconComponent = styled.button`
-  width: 100%;
+const CartIconComponent = styled.span`
+  width: 0%;
 `;
 
 const CartNumber = styled.p`
   position: absolute;
   top: 32px;
-  right: 17.1%;
+  right: 18%;
   font-size: 0.8rem;
   font-weight: bold;
   color: white;

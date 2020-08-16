@@ -51,7 +51,7 @@ const Map = ({ history }) => {
     storeInfoAPI();
   }, []);
 
-  //현재 위도,경도가 바뀌면 다시 화면이 그려지게 설정
+  // 현재 위도,경도가 바뀌면 다시 화면이 그려지게 설정
   useEffect(() => {}, [currentLat, currentLon]);
 
   // 맵을 그리는 함수
@@ -271,7 +271,7 @@ const MapComponent = styled.div`
 
 const ImgBox = styled.div`
   width: 100%;
-  height: 40%;
+  height: 300px;
   position: relative;
 `;
 

@@ -5,6 +5,7 @@ import { createStructuredSelector } from "reselect";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import CheckOutItem from "../../containers/CheckOutItem/CheckOutItem";
+import Payment from "../../containers/Payment/Payment";
 
 import {
   selectCartItems,
@@ -40,7 +41,9 @@ const Checkout = ({ history, cartItems, total }) => {
         </CheckoutContent>
         <BtnBox>
           <MenuAddBtn onClick={goBackMenuPage}>메뉴추가</MenuAddBtn>
-          <CheckoutBtn>주문하기</CheckoutBtn>
+          <CheckoutBtn>
+            <Payment total={total} />
+          </CheckoutBtn>
         </BtnBox>
       </CheckoutMain>
       <Footer />
@@ -117,8 +120,9 @@ const BtnBox = styled.div`
 const MenuAddBtn = styled.p`
   padding: 1.5em 10em;
   font-weight: 300;
-  border: 1px solid #000;
+  border: 1px solid #472c17;
   margin-top: 1em;
+  color: #472c17;
 
   :hover {
     cursor: pointer;
@@ -129,7 +133,7 @@ const CheckoutBtn = styled.p`
   padding: 1.5em 10em;
   font-weight: 300;
   color: white;
-  background-color: #000;
+  background-color: #472c17;
   margin-top: 1em;
 
   :hover {

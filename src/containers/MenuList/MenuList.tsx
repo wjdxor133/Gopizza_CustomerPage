@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
 import Login from "../../components/Modal/Login/Login";
 
-import { connect } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { addItem } from "../../redux/cart/cartActions";
 
 interface MenuListType {
@@ -60,6 +63,11 @@ const MenuList = ({ menuNum, currentUser, addItem }: MenuLisptProps) => {
                   onClick={() => {
                     showLoginModal();
                     addItem(menu);
+                    if (currentUser !== null)
+                      toast.success(`${menu.name} 추가!`, {
+                        position: "bottom-center",
+                        autoClose: 1500,
+                      });
                   }}
                 >
                   장바구니 추가
@@ -68,6 +76,7 @@ const MenuList = ({ menuNum, currentUser, addItem }: MenuLisptProps) => {
             );
           })}
       </MenuListBox>
+      <ToastContainer />
     </MenuListComponent>
   );
 };
@@ -101,7 +110,7 @@ const MenuItem = styled.li`
   flex-direction: column;
   align-items: center;
   margin-left: 3em;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
   background-color: white;
   border-radius: 10px;
   padding: 1em;
@@ -114,6 +123,7 @@ const MenuItem = styled.li`
     :nth-child(2) {
       font-weight: bold;
     }
+
     :nth-child(5) {
       font-size: 0.85rem;
     }
