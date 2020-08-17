@@ -64,7 +64,7 @@ const MenuList = ({ menuNum, currentUser, addItem }: MenuLisptProps) => {
                     showLoginModal();
                     addItem(menu);
                     if (currentUser !== null)
-                      toast.success(`${menu.name} 추가!`, {
+                      toast(`${menu.name} 추가!`, {
                         position: "bottom-center",
                         autoClose: 1500,
                       });
