@@ -35,7 +35,8 @@
 [![Video Label](https://dcamp.kr/api/sites/default/files/_1539233623.png)](https://youtu.be/ehIKADIH6eE)
 
 ## 사용한 기술
-- Front-End: HTML, Typescript, React Hooks, Styled-components, redux, firebase
+Front-End
+- HTML, Typescript, React Hooks, Styled-components, redux, firebase
 
 ## 추가 구현 기능
 - firebase를 통해 로그인, 회원가입 기능 구현
