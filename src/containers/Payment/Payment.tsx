@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-const Payment = ({ total }) => {
+const Payment = ({ total, userName, userEmail }) => {
   const onClickPayment = () => {
     /* 1. 가맹점 식별하기 */
     const { IMP } = window;
@@ -20,8 +20,8 @@ const Payment = ({ total }) => {
       merchant_uid: "merchant_" + new Date().getTime(),
       name: "주문명:결제테스트",
       amount: total,
-      buyer_email: "wjdxor133@naver.com",
-      buyer_name: "임정택",
+      buyer_email: "wjdxor133@naver.com", // userName
+      buyer_name: "임정택", // userEmail
       buyer_tel: "010-1234-5678",
       buyer_addr: "서울특별시 구로구 고척동",
       buyer_postcode: "123-456",
@@ -52,8 +52,8 @@ const Payment = ({ total }) => {
 };
 
 const mapStateToProps = ({ user: { currentUser } }) => ({
-  userName: currentUser,
-  userEmail: currentUser,
+  userName: currentUser.displayName,
+  userEmail: currentUser.email,
 });
 
 export default connect(mapStateToProps)(Payment);
