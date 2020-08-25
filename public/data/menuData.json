@@ -121,7 +121,7 @@
         "en_name": "Tomato Pasta",
         "tag_text": "새콤달콤하고 프레쉬한 토마토 파스타!",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/tomato-pasta-400x300.jpg",
-        "price": 7000
+        "price": 5000
       },
       {
         "id": 16,
@@ -129,7 +129,7 @@
         "en_name": "Carbonara Pasta",
         "tag_text": "생크림소스로 더 진하고 고소하게!",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/Carbonara-Pasta-400x300.jpg",
-        "price": 7000
+        "price": 5000
       },
       {
         "id": 17,
@@ -137,7 +137,7 @@
         "en_name": "Aglio e Olio Pasta",
         "tag_text": "매콤한 갈릭 오일 베이스의 고피자 시그니처 오일 파스타",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/alio-olio-pasta-400x300.jpg",
-        "price": 7000
+        "price": 5000
       },
       {
         "id": 18,
@@ -145,7 +145,7 @@
         "en_name": "Spicy Chicken Cheese Pasta",
         "tag_text": "매콤한 치킨과 부드러운 크림 소스 매니아들 자동 생성하는 맛!",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/Spicy-Chicken-Cheese-Pasta-400x300.jpg",
-        "price": 7000
+        "price": 5000
       },
       {
         "id": 19,
@@ -153,7 +153,7 @@
         "en_name": "Cheese Oven Pasta",
         "tag_text": "쭉~ 모짜렐라 치즈가 듬뿍 올라간 피자집 필수코스~",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/cheeseoven-pasta-400x300.jpg",
-        "price": 7000
+        "price": 5000
       },
       {
         "id": 20,
@@ -161,7 +161,7 @@
         "en_name": "Steak Rose Pasta",
         "tag_text": "로제 소스에 호주산 청정우 스테이크로 여성들 취항저격! 프리미엄 파스타",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2020/02/steak-rose-pasta-400x300.jpg",
-        "price": 7000
+        "price": 5000
       }
     ],
     [
@@ -171,7 +171,7 @@
         "en_name": "Chocolate Brownie",
         "tag_text": "화덕에서 구운 리.얼 브라우니",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/mini-brownie-400x300.jpg",
-        "price": 7000
+        "price": 3000
       },
       {
         "id": 23,
@@ -179,7 +179,7 @@
         "en_name": "Applemango Stick",
         "tag_text": "진짜 애플망고가 그대로 콕!",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2020/06/applemango-stick-web-400x300.jpg",
-        "price": 7000
+        "price": 1500
       },
       {
         "id": 24,
@@ -187,7 +187,7 @@
         "en_name": "Buffalo Wing - Original",
         "tag_text": "오리지널 버팔로윙의 짭짤한 맛",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/buffalowings-original-400x300.jpg",
-        "price": 7000
+        "price": 3000
       },
       {
         "id": 25,
@@ -195,7 +195,7 @@
         "en_name": "Chicken Tender",
         "tag_text": "누구나 좋아하는 부드럽고 촉촉한 닭 안심 부위",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2020/03/chickentender_02-400x300.jpg",
-        "price": 7000
+        "price": 3000
       },
       {
         "id": 26,
@@ -203,7 +203,7 @@
         "en_name": "French Fries",
         "tag_text": "고소하고 담백한 프렌치 프라이",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/frenchfries-400x300.jpg",
-        "price": 7000
+        "price": 3000
       },
       {
         "id": 27,
@@ -229,7 +229,7 @@
         "en_name": "Cold Brew",
         "tag_text": "시원~하게 롸잇나우!",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2020/06/coldbrew-web-400x300.jpg",
-        "price": 7000
+        "price": 4000
       },
       {
         "id": 30,
@@ -237,7 +237,7 @@
         "en_name": "Soft Drink",
         "tag_text": "콜라, 사이다, 마운틴듀, 미린다 오렌지",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/콜라-400x300.png",
-        "price": 7000
+        "price": 2000
       },
       {
         "id": 31,
@@ -245,7 +245,7 @@
         "en_name": "Green Grape Ade",
         "tag_text": "새콤달콤한 과일과 톡 쏘는 탄산으로 상큼하게!",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/청포도에이드-400x300.png",
-        "price": 7000
+        "price": 3500
       },
       {
         "id": 32,
@@ -253,7 +253,7 @@
         "en_name": "Grapefruit Ade",
         "tag_text": "새콤달콤한 과일과 톡 쏘는 탄산으로 상큼하게!",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/자몽에이드-400x300.png",
-        "price": 7000
+        "price": 3500
       },
       {
         "id": 33,
@@ -261,7 +261,7 @@
         "en_name": "Blueberry Lemon Ade",
         "tag_text": "새콤달콤한 과일과 톡 쏘는 탄산으로 상큼하게!",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/블루베리레몬에이드-400x300.png",
-        "price": 7000
+        "price": 3500
       },
       {
         "id": 34,
@@ -269,7 +269,7 @@
         "en_name": "Lime Ade",
         "tag_text": "새콤달콤한 과일과 톡 쏘는 탄산으로 상큼하게!",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2019/03/라임에이드-400x300.png",
-        "price": 1500
+        "price": 3500
       }
     ],
     [
@@ -279,7 +279,7 @@
         "en_name": "GOGO Package",
         "tag_text": "세트로 즐겨봐~",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2020/03/package-gogo-400x300.jpg",
-        "price": 1500
+        "price": 10000
       },
       {
         "id": 36,
@@ -287,7 +287,7 @@
         "en_name": "Chicken Package",
         "tag_text": "치킨을 좋아하는 당신에게..",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2020/03/package-chicken-400x300.jpg",
-        "price": 1500
+        "price": 10000
       }
     ],
     [
@@ -297,7 +297,7 @@
         "en_name": "Add Cheese",
         "tag_text": "치즈 덕후들은 알지?",
         "img_url": "https://www.gopizza.kr/wp-content/uploads/2020/03/topping-cheese-400x300.jpg",
-        "price": 1000
+        "price": 100
       },
       {
         "id": 38,

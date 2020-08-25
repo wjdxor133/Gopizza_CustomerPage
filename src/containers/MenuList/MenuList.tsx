@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+
 import styled from "styled-components";
 import Login from "../../components/Modal/Login/Login";
 
@@ -48,7 +49,9 @@ const MenuList = ({ menuNum, currentUser, addItem }: MenuLisptProps) => {
   console.log("currentUser", currentUser);
   return (
     <MenuListComponent>
-      {loginModal ? <Login showLoginModal={showLoginModal} /> : null}
+      {loginModal ? (
+        <Login showLoginModal={showLoginModal} setLoginModal={setLoginModal} />
+      ) : null}
       <MenuListBox>
         {menuData.length > 0 &&
           menuData[menuNum].map((menu) => {

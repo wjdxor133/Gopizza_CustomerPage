@@ -27,7 +27,7 @@ const CheckOutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
             &#10095;
           </CheckOutQuantityBtn>
         </CheckOutBoxItem>
-        <CheckOutBoxItem>{price}원</CheckOutBoxItem>
+        <CheckOutBoxItem>{price * quantity}원</CheckOutBoxItem>
         <CheckOutBoxItem onClick={() => clearItem(cartItem)}>
           <MdDeleteForever size="25" />
         </CheckOutBoxItem>

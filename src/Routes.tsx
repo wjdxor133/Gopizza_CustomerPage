@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "../src/pages/Main/Main";
-import Map from "../src/components/Map/Map";
+import Map from "../src/pages/Map/Map";
 import Menu from "../src/pages/Menu/Menu";
 import Checkout from "../src/pages/Checkout/Checkout";
 

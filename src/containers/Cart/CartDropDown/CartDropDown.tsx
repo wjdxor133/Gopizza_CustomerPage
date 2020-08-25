@@ -34,8 +34,10 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps)(CartDropDown);
 
 const CartDropDownComponent = styled.div`
-  width: 20%;
+  width: 300px;
   background-color: white;
+  color: #000;
+  text-align: center;
   position: absolute;
   display: flex;
   justify-content: center;
