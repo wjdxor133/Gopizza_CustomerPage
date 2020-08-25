@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { InstaAPI } from "../../../config";
+// import { InstaAPI } from "../../../core/api/api";
 import Fade from "react-reveal/Fade";
 import styled from "styled-components";
 
@@ -7,13 +7,13 @@ const InstaConnect = () => {
   const [image, setImage] = useState<any>([]);
 
   useEffect(() => {
-    fetch(`${InstaAPI}`, { method: "GET" })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.data !== undefined && res.data.length > 0) {
-          setImage(res.data);
-        }
-      });
+    // fetch(`${InstaAPI}`, { method: "GET" })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     if (res.data !== undefined && res.data.length > 0) {
+    //       setImage(res.data);
+    //     }
+    //   });
   }, []);
   return (
     <InstagramWrap>

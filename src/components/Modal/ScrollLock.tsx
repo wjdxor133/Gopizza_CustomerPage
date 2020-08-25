@@ -6,12 +6,12 @@ declare global {
   }
 }
 
-const ScrollLock = async () => {
-  await useLayoutEffect((): any => {
+function ScrollLock() {
+  useLayoutEffect((): any => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = "hidden";
-    return async () => await (document.body.style.overflow = originalStyle);
+    return () => (document.body.style.overflow = originalStyle);
   }, []);
-};
+}
 
 export default ScrollLock;

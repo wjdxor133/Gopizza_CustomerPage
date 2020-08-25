@@ -6,11 +6,11 @@ import theme from "./style/theme";
 import { ThemeProvider } from "./style/theme-components";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <Routes />
     </ThemeProvider>
-  </React.StrictMode>,
+  </>,
   document.getElementById("root")
 );

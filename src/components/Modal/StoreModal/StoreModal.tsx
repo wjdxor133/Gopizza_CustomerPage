@@ -1,26 +1,24 @@
 import React from "react";
-// import ScrollLock from "../ScrollLock";
+import ScrollLock from "../ScrollLock";
 import styled from "styled-components";
 import Fade from "react-reveal/Fade";
 
-interface NotNearStoreProps {
+type StoreModalProps = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal: boolean;
   order: boolean;
-}
+};
 
-const NotNearStore = ({
-  setShowModal,
-  showModal,
-  order,
-}: NotNearStoreProps) => {
+const StoreModal = ({ setShowModal, showModal, order }: StoreModalProps) => {
   const closeModal = () => {
     setShowModal(!showModal);
   };
 
+  ScrollLock();
+
   console.log("order", order);
   return (
-    <NotNearStroeModal>
+    <StoreModalComponent>
       {order ? (
         <ModalBox>
           <Fade bottom>
@@ -45,13 +43,13 @@ const NotNearStore = ({
           </Fade>
         </ModalBox>
       )}
-    </NotNearStroeModal>
+    </StoreModalComponent>
   );
 };
 
-export default NotNearStore;
+export default StoreModal;
 
-const NotNearStroeModal = styled.div`
+const StoreModalComponent = styled.div`
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);

@@ -18,17 +18,15 @@ const MapList = ({ storeList }: MapListProps) => {
       </MapListTable>
       <MapListTable>
         <Tbody>
-          <ScrollBox>
-            {storeList.map((store: any, idx: number) => {
-              return (
-                <TrTag key={idx}>
-                  <TdTag>{store.name}</TdTag>
-                  <TdTag>{store.tel}</TdTag>
-                  <TdTag>{store.hours}</TdTag>
-                </TrTag>
-              );
-            })}
-          </ScrollBox>
+          {storeList.map((store: any, idx: number) => {
+            return (
+              <TrTag key={idx}>
+                <TdTag>{store.name}</TdTag>
+                <TdTag>{store.tel}</TdTag>
+                <TdTag>{store.hours}</TdTag>
+              </TrTag>
+            );
+          })}
         </Tbody>
       </MapListTable>
     </MapListComponent>
@@ -39,6 +37,7 @@ export default MapList;
 
 const MapListComponent = styled.div`
   width: 40%;
+  margin-left: 1em;
 `;
 
 const MapListTable = styled.table`
@@ -50,9 +49,7 @@ const Thead = styled.thead`
   border-bottom-style: none;
 `;
 
-const Tbody = styled.tbody``;
-
-const ScrollBox = styled.div`
+const Tbody = styled.tbody`
   width: 100%;
   overflow-y: scroll;
   height: 400px;
@@ -60,6 +57,8 @@ const ScrollBox = styled.div`
   flex-direction: column;
   border: 1px solid #ddd;
 `;
+
+// const ScrollBox = styled.div``;
 
 const ThTag = styled.th`
   width: 33.3%;

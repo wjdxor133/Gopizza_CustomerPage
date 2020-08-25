@@ -1,11 +1,12 @@
 /* global kakao*/
 import React, { useState, useEffect } from "react";
-import Footer from "../Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import axios from "axios";
-import { StoreAPI, apiKey } from "../../config";
-import MapList from "./MapList/MapList";
-import ModalPortal from "../Modal/ModalPortal";
-import NotNearStore from "../Modal/NotNearStore/NotNearStore";
+import { StoreAPI, kakaoApiKey } from "../../core/api/api";
+import MapList from "../../components/MapList/MapList";
+import ModalPortal from "../../components/Modal/ModalPortal";
+import StoreModal from "../../components/Modal/StoreModal/StoreModal";
 import styled from "styled-components";
 declare global {
   interface Window {
@@ -21,7 +22,7 @@ interface MapStateType {
   order: boolean;
 }
 
-const Map = () => {
+const Map = ({ history }) => {
   const imageSrc: string =
     "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png";
   const [gopizzaMap, setGopizzaMap] = useState<any>(); // 지도 생성 후 담은 변수
@@ -37,26 +38,27 @@ const Map = () => {
   const { currentLat, currentLon, storeMarkers, order } = data;
 
   // 매장 API
-  const storeInfoAPI = async () => {
-    // 목데이터 /data/locationData.json
-    const result = await (await axios.get("/data/locationData.json")).data.data;
-    // const result = (await axios.get(StoreAPI)).data.data;
-    KakaoMap(result);
-  };
 
   // API 한번만 받아올 수 있게 설정
   useEffect(() => {
+    const storeInfoAPI = async () => {
+      // 목데이터 /data/locationData.json
+      const result = await (await axios.get("/data/locationData.json")).data
+        .data;
+      // const result = (await axios.get(StoreAPI)).data.data;
+      KakaoMap(result);
+    };
     storeInfoAPI();
   }, []);
 
-  //현재 위도,경도가 바뀌면 다시 화면이 그려지게 설정
+  // 현재 위도,경도가 바뀌면 다시 화면이 그려지게 설정
   useEffect(() => {}, [currentLat, currentLon]);
 
   // 맵을 그리는 함수
   const KakaoMap = (result) => {
     const script = document.createElement("script");
     script.async = true;
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false`;
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoApiKey}&autoload=false`;
     document.body.appendChild(script);
     script.onload = () => {
       window.kakao.maps.load(() => {
@@ -226,14 +228,14 @@ const Map = () => {
     <MapComponent>
       {showModal ? (
         <ModalPortal elementId="modal">
-          <NotNearStore
+          <StoreModal
             setShowModal={setShowModal}
             showModal={showModal}
             order={order}
           />
         </ModalPortal>
       ) : null}
-      <MapTitle>GOPIZZA</MapTitle>
+      <Header history={history} />
       <ImgBox>
         <Img
           src="https://www.gopizza.kr/wp-content/uploads/2019/03/홈페이지-매장1.jpg"
@@ -267,18 +269,9 @@ const MapComponent = styled.div`
   height: 100vh;
 `;
 
-const MapTitle = styled.div`
-  width: 100%;
-  background-color: #f86d0d;
-  color: white;
-  font-size: 2rem;
-  font-weight: 700;
-  padding: 1.2em 7em;
-`;
-
 const ImgBox = styled.div`
   width: 100%;
-  height: 40%;
+  height: 300px;
   position: relative;
 `;
 
