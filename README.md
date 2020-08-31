@@ -44,4 +44,4 @@ Front-End
 - firebase 구글 로그인 연동
 - react-redux를 통해 장바구니 품목 추가, 수량 증가 및 감소, 삭제 기능 구현
 - Import를 연동하여 장바구니에 담긴 항목 결제 하기 기능 구현
-- redux의 성능 향상을 위해 reselect, redux-persist, redux-logger 라이브러리 적용하여 구
+- redux의 성능 향상을 위해 reselect, redux-persist, redux-logger 라이브러리 적용하여 구현
