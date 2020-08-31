@@ -30,7 +30,7 @@
 ## Upgrade
 - 인턴쉽 이후 애매하게 프로젝트가 끝이나서, 추가적으로 redux 적용과 firebase를 이용해 추가로 더 진행했습니다.
 - 인원 : 프론트 1명
-- 프로젝트 기간 : 2020.07 ~ 2020.08.16 (약 2~3주간 진행)
+- 프로젝트 기간 : 2020.07 ~ 2020.08.16 (약 3주간 진행)
 
 ## Demo (click!)
 [![Video Label](https://dcamp.kr/api/sites/default/files/_1539233623.png)](https://youtu.be/ehIKADIH6eE)
