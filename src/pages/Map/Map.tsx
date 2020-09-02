@@ -1,12 +1,12 @@
 /* global kakao*/
 import React, { useState, useEffect } from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import { StoreAPI, kakaoApiKey } from "../../core/api/api";
-import MapList from "./MapList/MapList";
-import ModalPortal from "../Modal/ModalPortal";
-import StoreModal from "../Modal/StoreModal/StoreModal";
+import MapList from "../../components/MapList/MapList";
+import ModalPortal from "../../components/Modal/ModalPortal";
+import StoreModal from "../../components/Modal/StoreModal/StoreModal";
 import styled from "styled-components";
 declare global {
   interface Window {
@@ -51,7 +51,7 @@ const Map = ({ history }) => {
     storeInfoAPI();
   }, []);
 
-  //현재 위도,경도가 바뀌면 다시 화면이 그려지게 설정
+  // 현재 위도,경도가 바뀌면 다시 화면이 그려지게 설정
   useEffect(() => {}, [currentLat, currentLon]);
 
   // 맵을 그리는 함수
@@ -271,7 +271,7 @@ const MapComponent = styled.div`
 
 const ImgBox = styled.div`
   width: 100%;
-  height: 40%;
+  height: 300px;
   position: relative;
 `;
 

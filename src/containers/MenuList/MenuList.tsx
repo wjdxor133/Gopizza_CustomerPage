@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
+
 import styled from "styled-components";
 import Login from "../../components/Modal/Login/Login";
 
-import { connect } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { addItem } from "../../redux/cart/cartActions";
 
 interface MenuListType {
@@ -24,50 +28,68 @@ type MenuLisptProps = {
 const MenuList = ({ menuNum, currentUser, addItem }: MenuLisptProps) => {
   const [menuData, setMenuData] = useState<Array<MenuListType[]>>([]);
   const [loginModal, setLoginModal] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    const apiData = async () =>
-      await axios.get("/data/menuData.json").then((res) => {
-        return setMenuData(res.data.data);
-      });
+    const apiData = () => {
+      setTimeout(async () => {
+        await axios.get("/data/menuData.json").then((res) => {
+          setMenuData(res.data.data);
+          setIsLoading(false);
+        });
+      }, 500);
+      setIsLoading(true);
+    };
     apiData();
   }, [menuNum]);
 
   const showLoginModal = () => {
     if (currentUser === null) {
       setLoginModal(true);
-      console.log("loginModal", loginModal);
     } else if (currentUser !== null) {
-      console.log("loginModal", loginModal);
       setLoginModal(false);
     }
   };
-  console.log("currentUser", currentUser);
+
   return (
     <MenuListComponent>
-      {loginModal ? <Login showLoginModal={showLoginModal} /> : null}
-      <MenuListBox>
-        {menuData.length > 0 &&
-          menuData[menuNum].map((menu) => {
-            return (
-              <MenuItem key={menu.id}>
-                <img src={`${menu.img_url}`} alt=" "></img>
-                <p>{menu.name}</p>
-                <p>{menu.en_name}</p>
-                <p>{menu.price}원</p>
-                <p>#{menu.tag_text}</p>
-                <button
-                  onClick={() => {
-                    showLoginModal();
-                    addItem(menu);
-                  }}
-                >
-                  장바구니 추가
-                </button>
-              </MenuItem>
-            );
-          })}
-      </MenuListBox>
+      {loginModal ? (
+        <Login showLoginModal={showLoginModal} setLoginModal={setLoginModal} />
+      ) : null}
+      {isLoading === true ? (
+        <LoadingBox>
+          <LoadingText>Loading...</LoadingText>
+        </LoadingBox>
+      ) : (
+        <MenuListBox>
+          {menuData.length > 0 &&
+            menuData[menuNum].map((menu) => {
+              return (
+                <MenuItem key={menu.id}>
+                  <img src={`${menu.img_url}`} alt=" "></img>
+                  <p>{menu.name}</p>
+                  <p>{menu.en_name}</p>
+                  <p>{menu.price}원</p>
+                  <p>#{menu.tag_text}</p>
+                  <button
+                    onClick={() => {
+                      showLoginModal();
+                      addItem(menu);
+                      if (currentUser !== null)
+                        toast(`${menu.name} 추가!`, {
+                          position: "bottom-center",
+                          autoClose: 1500,
+                        });
+                    }}
+                  >
+                    장바구니 추가
+                  </button>
+                </MenuItem>
+              );
+            })}
+        </MenuListBox>
+      )}
+      <ToastContainer />
     </MenuListComponent>
   );
 };
@@ -94,6 +116,19 @@ const MenuListBox = styled.ul`
   margin: 0 auto;
 `;
 
+const LoadingBox = styled.div`
+  width: 80%;
+  margin: 0 auto;
+`;
+
+const LoadingText = styled.p`
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0.5;
+  padding: 3em;
+`;
+
 const MenuItem = styled.li`
   width: 20%;
   display: flex;
@@ -101,7 +136,7 @@ const MenuItem = styled.li`
   flex-direction: column;
   align-items: center;
   margin-left: 3em;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
   background-color: white;
   border-radius: 10px;
   padding: 1em;
@@ -114,6 +149,7 @@ const MenuItem = styled.li`
     :nth-child(2) {
       font-weight: bold;
     }
+
     :nth-child(5) {
       font-size: 0.85rem;
     }

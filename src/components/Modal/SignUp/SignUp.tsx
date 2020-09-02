@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   auth,
   createUserProfileDocument,
@@ -28,8 +31,6 @@ const SignUp = () => {
       ...inputValue,
       [name]: value,
     });
-
-    console.log("inputValue", inputValue);
   };
 
   const handleSubmit = async (event) => {
@@ -52,8 +53,13 @@ const SignUp = () => {
         password: "",
         confirmPassword: "",
       });
+      toast.success("계정이 생성되어 자동 로그인 되었습니다.", {
+        position: "bottom-center",
+        autoClose: 1500,
+      });
     } catch (error) {
       console.error(error);
+      alert("이미 가입된 계정입니다.");
     }
   };
 
@@ -98,10 +104,13 @@ const SignUp = () => {
           />
         </SignUpTextBox>
       </SignUpFormBox>
+
       <SignUpBtn type="submit" onClick={handleSubmit}>
         회원가입
       </SignUpBtn>
+
       <SignUpBtn onClick={signInWithGoogle}> Sign in with Google </SignUpBtn>
+      <ToastContainer />
     </SignUpComponent>
   );
 };

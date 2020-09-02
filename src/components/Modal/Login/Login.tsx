@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import SignUp from "../SignUp/SignUp";
 import ScrollLock from "../ScrollLock";
 
@@ -10,7 +14,7 @@ type LoginType = {
   password: string;
 };
 
-const Login = ({ showLoginModal }) => {
+const Login = ({ showLoginModal, setLoginModal }) => {
   const [inputValue, setInputValue] = useState<LoginType>({
     email: "",
     password: "",
@@ -40,6 +44,10 @@ const Login = ({ showLoginModal }) => {
       setInputValue({
         email: "",
         password: "",
+      });
+      toast.success("로그인 되었습니다.", {
+        position: "bottom-center",
+        autoClose: 1500,
       });
     } catch (error) {
       console.log(error);
@@ -77,12 +85,16 @@ const Login = ({ showLoginModal }) => {
               />
             </LoginTextBox>
           </LoginFormBox>
-          <LoginBtn onClick={handleSubmit}>로그인</LoginBtn>
+          <LoginBtnBox>
+            <LoginBtn onClick={handleSubmit}>로그인</LoginBtn>
+            <CloseBtn onClick={() => setLoginModal(false)}>닫기</CloseBtn>
+          </LoginBtnBox>
           <GotoSignUpText onClick={goToSignUp}>
             계정이 없으신가요?
           </GotoSignUpText>
         </ModalBox>
       )}
+      <ToastContainer />
     </LoginComponent>
   );
 };
@@ -141,6 +153,10 @@ const InputText = styled.input`
   padding: 0.3em;
 `;
 
+const LoginBtnBox = styled.div`
+  display: flex;
+`;
+
 const LoginBtn = styled.button`
   font-size: 1.2rem;
   background-color: #472c17;
@@ -158,6 +174,19 @@ const GotoSignUpText = styled.p`
   color: gray;
   :hover {
     color: #000;
+    cursor: pointer;
+  }
+`;
+
+const CloseBtn = styled.button`
+  font-size: 1.2rem;
+  background-color: #472c17;
+  color: white;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  margin-left: 1em;
+
+  :hover {
     cursor: pointer;
   }
 `;

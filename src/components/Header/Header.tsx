@@ -69,11 +69,10 @@ const Header = ({ history, setCurrentUser }) => {
           >
             매장찾기
           </NavText>
-          <NavText>
+          <NavCartText>
             장바구니
             <CartIcon history={history} />
-          </NavText>
-          {/* <CartIcon /> */}
+          </NavCartText>
           {curUserState ? (
             <NavText
               onClick={() => {
@@ -125,17 +124,25 @@ const NavTextBox = styled.div`
   width: 50%;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 `;
 
 const NavText = styled.p`
   width: 25%;
   font-size: 1.4rem;
   font-weight: 700;
-  /* margin-right: 3em; */
+  position: relative;
 
-  :nth-child(3) {
-    margin-top: 1em;
+  :hover {
+    cursor: pointer;
+    color: #000;
   }
+`;
+
+const NavCartText = styled.div`
+  width: 25%;
+  font-size: 1.4rem;
+  font-weight: 700;
 
   :hover {
     cursor: pointer;

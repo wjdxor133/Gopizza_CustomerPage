@@ -5,6 +5,7 @@ import { createStructuredSelector } from "reselect";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import CheckOutItem from "../../containers/CheckOutItem/CheckOutItem";
+import Payment from "../../containers/Payment/Payment";
 
 import {
   selectCartItems,
@@ -12,6 +13,10 @@ import {
 } from "../../redux/cart/cartSelectors";
 
 const Checkout = ({ history, cartItems, total }) => {
+  const goBackMenuPage = () => {
+    history.push("/menu");
+  };
+
   return (
     <CheckoutComponent>
       <Header history={history} />
@@ -28,9 +33,18 @@ const Checkout = ({ history, cartItems, total }) => {
             {cartItems.map((cartItem) => {
               return <CheckOutItem key={cartItem.id} cartItem={cartItem} />;
             })}
+            <PriceTextBox>
+              <PriceText>합계</PriceText>
+              <PriceText>총 가격: {total}원</PriceText>
+            </PriceTextBox>
           </CheckoutList>
         </CheckoutContent>
-        <PriceText>TOTAL: {total}원</PriceText>
+        <BtnBox>
+          <MenuAddBtn onClick={goBackMenuPage}>메뉴추가</MenuAddBtn>
+          <CheckoutBtn>
+            <Payment total={total} />
+          </CheckoutBtn>
+        </BtnBox>
       </CheckoutMain>
       <Footer />
     </CheckoutComponent>
@@ -50,7 +64,7 @@ const CheckoutComponent = styled.div`
 
 const CheckoutMain = styled.div`
   width: 70%;
-  margin: 0 auto;
+  margin: 1em auto;
 `;
 
 const CheckoutTitle = styled.p`
@@ -83,9 +97,46 @@ const ContentNavText = styled.p`
 
 const CheckoutList = styled.ul`
   width: 100%;
+  border-bottom: 1px solid #000;
+`;
+
+const PriceTextBox = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const PriceText = styled.p`
   text-align: right;
   font-size: 2rem;
+  margin: 1em 0;
+`;
+
+const BtnBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 2em 0;
+`;
+
+const MenuAddBtn = styled.p`
+  padding: 1.5em 10em;
+  font-weight: 300;
+  border: 1px solid #472c17;
+  margin-top: 1em;
+  color: #472c17;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+const CheckoutBtn = styled.p`
+  padding: 1.5em 10em;
+  font-weight: 300;
+  color: white;
+  background-color: #472c17;
+  margin-top: 1em;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
