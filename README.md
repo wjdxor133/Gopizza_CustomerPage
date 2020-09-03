@@ -19,7 +19,7 @@
 ## 기능
 
 - Instagram API 웹 페이지 연동
-- 고피자 Youtube Back-end API 받아 Axios를 이용해 통신하고, Active Tap 기능 구현
+- 고피자 Youtube Back-end API 받아 Axios를 이용해 통신하고, 메뉴 탭 기능 구현
 - react-slick 라이브러리를 사용하여 슬라이드 구현
 - Kakao API를 통해 고피자 카카오 플러스 친구 추가 기능 구현
 - Kakao API를 통해 카카오 지도에 고피자 매장 위치 마크 띄우기 구현
