@@ -1,10 +1,26 @@
-import React from "react";
-import KakaoPlusBtn from "./KakaoPlusBtn/KakaoPlusBtn";
+import React, { useEffect } from "react";
+// import KakaoPlusBtn from "./KakaoPlusBtn/KakaoPlusBtn";
 import styled from "styled-components";
 import kakaoPlus from "../../assets/img/kakaoPlus.png";
 import Fade from "react-reveal/Fade";
 
+import { kakaoApiKey } from "../../core/api/api";
+
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
+
 const ApplicationKakao = () => {
+  useEffect(() => {
+    window.Kakao.init(`${kakaoApiKey}`);
+    window.Kakao.PlusFriend.createAddFriendButton({
+      container: "#plusfriend-addfriend-button",
+      plusFriendId: "_dYsxjxb", // 플러스친구 홈 URL에 명시된 id로 설정합니다.
+    });
+  }, []);
+
   return (
     <ContentWrap>
       <Header>
@@ -15,7 +31,9 @@ const ApplicationKakao = () => {
       </Header>
       <KakaoPlusImg>
         <img src={kakaoPlus} alt="" />
-        <KakaoPlusBtn />
+        <KakaoBtn>
+          <div id="plusfriend-addfriend-button"></div>
+        </KakaoBtn>
       </KakaoPlusImg>
     </ContentWrap>
   );
@@ -59,4 +77,12 @@ const KakaoPlusImg = styled.div`
   img {
     width: 50%;
   }
+`;
+
+const KakaoBtn = styled.div`
+  width: 12%;
+  position: absolute;
+  z-index: 999;
+  top: 55%;
+  left: 28.5%;
 `;
