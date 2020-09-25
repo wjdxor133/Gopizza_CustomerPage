@@ -42,7 +42,7 @@ const Header = ({ history, setCurrentUser }) => {
     });
 
     return () => unsubscribeFromAuth();
-  }, []);
+  }, [setCurrentUser]);
 
   return (
     <HeaderComponent>
