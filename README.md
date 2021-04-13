@@ -1,4 +1,4 @@
-# GOPIZZA 고피자 인턴 프로젝트
+# GOPIZZA 고피자 인턴 프로젝트(리펙토링 후 수정 할 예정!)
 
 ## Introdution
 
